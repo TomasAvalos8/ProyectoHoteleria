@@ -1,0 +1,22 @@
+﻿body {
+    font-family: 'Roboto', sans-serif; /* Usa Roboto como fuente principal */
+}
+
+h1 {
+    font-family: 'Libre Baskerville', serif; /* Usa Libre Baskerville para títulos */
+    font-weight: 700; /* Negrita */
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* Regular */
+}
+
+/*.roboto-<uniquifier > {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+*/
