@@ -55,6 +55,14 @@ namespace ProyectoHotel
                 e.Cell.ForeColor = System.Drawing.Color.White;
                 e.Cell.ToolTip = "Reservado";
             }
+            // Deshabilitar fechas pasadas
+            if (e.Day.Date < DateTime.Today)
+            {
+                e.Day.IsSelectable = false; // No se puede seleccionar
+                e.Cell.BackColor = System.Drawing.Color.LightGray; // Fondo gris para diferenciar
+                e.Cell.ForeColor = System.Drawing.Color.DarkGray; // Texto gris
+                e.Cell.ToolTip = "Fecha no disponible"; // Tooltip informativo
+            }
         }
 
         // Evento para confirmar la reserva al hacer clic en el botón
