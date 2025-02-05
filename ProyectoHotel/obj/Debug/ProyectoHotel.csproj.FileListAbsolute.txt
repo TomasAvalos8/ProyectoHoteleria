@@ -116,3 +116,9 @@ C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHot
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\roslyn\vbc.rsp
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\roslyn\VBCSCompiler.exe
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Dominio.dll
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Negocio.dll
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Dominio.pdb
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Dominio.dll.config
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Negocio.pdb
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Negocio.dll.config
