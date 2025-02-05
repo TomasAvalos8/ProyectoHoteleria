@@ -57,3 +57,13 @@ C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\obj\Debug\ProyectoHote
 C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\obj\Debug\Proyecto.93933CAE.Up2Date
 C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\obj\Debug\ProyectoHotel.dll
 C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\obj\Debug\ProyectoHotel.pdb
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\ProyectoHotel.dll.config
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\ProyectoHotel.dll
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\ProyectoHotel.pdb
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\obj\Debug\ProyectoHotel.csproj.AssemblyReference.cache
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\obj\Debug\ProyectoHotel.csproj.CoreCompileInputs.cache
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\obj\Debug\Proyecto.93933CAE.Up2Date
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\obj\Debug\ProyectoHotel.dll
+C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\obj\Debug\ProyectoHotel.pdb
