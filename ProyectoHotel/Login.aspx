@@ -11,7 +11,7 @@
 </head>
 <body>
  <header>
-    <nav class="navbar bg-dark ">
+    <nav class="navbar" style="background-color:#003b95">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#">Hoteleria
             </a>

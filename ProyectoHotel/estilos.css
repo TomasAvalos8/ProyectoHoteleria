@@ -12,11 +12,15 @@ p {
     font-weight: 400; /* Regular */
 }
 
-/*.roboto-<uniquifier > {
-    font-family: "Roboto", serif;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+
+.sidebar {
+    height: 100vh;
+    background-color: #003b95;
+    padding-top: 20px;
 }
-*/
+.sidebar a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        display: block;
+ }

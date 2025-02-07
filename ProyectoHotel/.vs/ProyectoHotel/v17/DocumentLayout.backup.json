@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tomas\\onedrive\\escritorio\\proyecto\\proyectohotel\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tomas\\onedrive\\escritorio\\proyecto\\proyectohotel\\paginamaestra.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:paginamaestra.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tomas\\onedrive\\escritorio\\proyecto\\proyectohotel\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{04CA6C01-BC65-4825-88EE-7C036B21C6E0}|..\\Negocio\\Negocio.csproj|c:\\users\\tomas\\onedrive\\escritorio\\proyecto\\negocio\\usuarionegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -12,12 +28,8 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Negocio\\UsuarioNegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tomas\\onedrive\\escritorio\\proyecto\\proyectohotel\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Dominio\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -30,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +54,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\Default.aspx",
+              "RelativeDocumentMoniker": "Default.aspx",
+              "ToolTip": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\Default.aspx",
+              "RelativeToolTip": "Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-02-07T02:49:16.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "estilos.css",
+              "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\estilos.css",
+              "RelativeDocumentMoniker": "estilos.css",
+              "ToolTip": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\estilos.css",
+              "RelativeToolTip": "estilos.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-07T02:46:30.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "PaginaMaestra.Master",
+              "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\PaginaMaestra.Master",
+              "RelativeDocumentMoniker": "PaginaMaestra.Master",
+              "ToolTip": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\PaginaMaestra.Master",
+              "RelativeToolTip": "PaginaMaestra.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-02-07T01:28:37.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\Dominio\\Usuario.cs",
               "RelativeDocumentMoniker": "..\\Dominio\\Usuario.cs",
@@ -50,12 +101,11 @@
               "RelativeToolTip": "..\\Dominio\\Usuario.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T00:44:19.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-07T00:44:19.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UsuarioNegocio.cs",
               "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\Negocio\\UsuarioNegocio.cs",
               "RelativeDocumentMoniker": "..\\Negocio\\UsuarioNegocio.cs",
@@ -68,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "UsuarioNegocio.cs",
               "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Negocio\\UsuarioNegocio.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Negocio\\UsuarioNegocio.cs",
@@ -79,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Dominio\\Usuario.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Dominio\\Usuario.cs",
@@ -91,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Login.aspx.cs",
               "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\Login.aspx.cs",
               "RelativeDocumentMoniker": "Login.aspx.cs",
@@ -99,12 +149,11 @@
               "RelativeToolTip": "Login.aspx.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAA1wBEAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T23:13:20.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T23:13:20.134Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Login.aspx",
               "DocumentMoniker": "C:\\Users\\tomas\\OneDrive\\Escritorio\\Proyecto\\ProyectoHotel\\Login.aspx",
               "RelativeDocumentMoniker": "Login.aspx",
@@ -112,7 +161,8 @@
               "RelativeToolTip": "Login.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-02-05T23:02:50.286Z"
+              "WhenOpened": "2025-02-05T23:02:50.286Z",
+              "EditorCaption": ""
             }
           ]
         }
