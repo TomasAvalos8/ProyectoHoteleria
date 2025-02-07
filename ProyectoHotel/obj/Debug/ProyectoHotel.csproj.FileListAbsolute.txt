@@ -122,3 +122,9 @@ C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHot
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Dominio.dll.config
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Negocio.pdb
 C:\Users\tbram\Documents\FACULTAD\PROGRAMACION III\ProyectoHoteleria\ProyectoHotel\bin\Negocio.dll.config
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Dominio.dll
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Negocio.dll
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Dominio.pdb
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Dominio.dll.config
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Negocio.pdb
+C:\Users\tomas\OneDrive\Escritorio\Proyecto\ProyectoHotel\bin\Negocio.dll.config
