@@ -1,46 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ProyectoHotel.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
 
-            <div class="container-fluid">
-                <h2>Filtro de búsqueda para reservar</h2>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="card mb-3 mx-2" style="max-width: 18rem;">
+            <div class="card-header bg-success text-white">Entradas</div>
+            <div class="card-body bg-white">
+                <h5 class="card-title">Success card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
-            <h2>Tabla de habitaciones con seleccionable</h2>
-
-            <!-- Calendario ASP.NET -->
-            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px"
-                DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt"
-                ForeColor="#003399"
-                OnSelectionChanged="Calendar1_SelectionChanged" OnDayRender="Calendar1_DayRender" CellPadding="1" Height="200px" Width="220px">
-                <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
-                <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
-                <OtherMonthDayStyle ForeColor="#999999" />
-                <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
-                <TitleStyle BackColor="#003399" BorderColor="#3366CC" BorderWidth="1px" Font-Bold="True" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
-                <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
-                <WeekendDayStyle BackColor="#CCCCFF" />
-            </asp:Calendar>
-
-
-            <asp:Button ID="btnReservar" runat="server" Text="Reservar Fecha" OnClick="btnReservar_Click" />
-            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Fechas" OnClick="btnLimpiar_Click" />
-
-            <!-- Etiqueta para mostrar la fecha seleccionada -->
-            <div class="calendar-footer-container">
-                <h3>Fechas Reservadas:</h3>
-                <asp:Label ID="lblReservas" runat="server" Text="Ninguna"></asp:Label>
+        </div>
+        <div class="card mb-3 mx-2" style="max-width: 18rem;">
+            <div class="card-header bg-danger text-white">Salidas</div>
+            <div class="card-body bg-white">
+                <h5 class="card-title">Danger card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
+        </div>
+        <div class="card mb-3 mx-2" style="max-width: 18rem;">
+            <div class="card-header bg-primary text-white">Reservas</div>
+            <div class="card-body bg-white">
+                <h5 class="card-title">Danger card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+    </div>
+
+
+
+
 
 
 </asp:Content>

@@ -16,12 +16,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        
             <header style="background-color: #003b95">
 
                 <div class="dropdown" align="right">
                     <asp:ImageButton ID="ImageButton1" runat="server" AlternateText="LOGO" OnClick="ImageButton1_Click" ImageAlign="Left" />
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn dropdown-toggle text-white" style="background-color: #0047B8;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Usuario
                     </button>
                     <ul class="dropdown-menu">
@@ -31,18 +31,16 @@
                     </ul>
                 </div>
 
-
-
             </header>
 
             <div class="container-fluid">
                 <div class="row">
                     <!-- Columna Izquierda - Sidebar -->
-                    <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-                        <h3 class="text-center text-white">Menú</h3>
-                        <a href="Home.aspx">🏠 Inicio</a>
-                        <a href="Perfil.aspx">👤 Perfil</a>
+                    <nav class="col-md-3 col-lg-2 d-md-block sidebar" style="background-color: #0047B8">
+                        <a href="Default.aspx">🏠 Inicio</a>
+                        <a href="Reservas.aspx">📅 Planificacion</a>
                         <a href="Mensajes.aspx">📩 Mensajes</a>
+                        <a href="Mensajes.aspx">📊 Informes</a>
                         <a href="Configuracion.aspx">⚙ Configuración</a>
                     </nav>
 
@@ -56,7 +54,7 @@
 
 
             <footer></footer>
-        </div>
+        
     </form>
 </body>
 </html>
