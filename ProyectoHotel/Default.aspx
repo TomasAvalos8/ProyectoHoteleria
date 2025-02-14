@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="d-flex align-items-center justify-content-center" style="height: 90vh;">
         <div class="card mb-3 mx-2" style="max-width: 18rem;">
             <div class="card-header bg-success text-white">Entradas</div>
             <div class="card-body bg-white">

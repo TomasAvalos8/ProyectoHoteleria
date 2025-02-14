@@ -1,6 +1,23 @@
-﻿body {
-    font-family: 'Roboto', sans-serif; /* Usa Roboto como fuente principal */
+﻿html, body, form {
+    height:100vh;
+   width:100%;
+    margin:0;
+    padding:0;
+    /*overflow:hidden;*/
 }
+body {
+    font-family: 'Roboto', sans-serif; /* Usa Roboto como fuente principal */
+   
+    display:flex;
+    flex-direction:column;
+}
+header {
+    width: 100%;
+    height: 10vh;
+    align-content:center;
+    
+}
+
 
 h1 {
     font-family: 'Libre Baskerville', serif; /* Usa Libre Baskerville para títulos */
@@ -13,10 +30,13 @@ p {
 }
 
 
+
 .sidebar {
-    height:auto;
+     
     background-color: #003b95;
-    padding-top: 20px;
+    
+    height:90vh;
+    
 }
 
     .sidebar a {

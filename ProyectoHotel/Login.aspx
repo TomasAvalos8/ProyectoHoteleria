@@ -19,7 +19,7 @@
     </nav>
 </header>
     <form id="form1" runat="server">
-        <div class="row justify-content-center align-items-center" style="height: 80vh;">
+        <div class="row justify-content-center align-items-center" style="height: 80vh;width:100%;">
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="mb-3">
