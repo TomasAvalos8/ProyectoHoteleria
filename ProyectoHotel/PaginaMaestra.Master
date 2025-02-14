@@ -20,8 +20,7 @@
             <header style="background-color: #003b95">
 
                 <div class="dropdown" align="right">
-                    <asp:ImageButton ID="ImageButton1" runat="server" AlternateText="LOGO" OnClick="ImageButton1_Click" ImageAlign="Left" />
-                    <button class="btn dropdown-toggle text-white" style="background-color: #0047B8;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/logo%20hoteleria.jpg" Width="200px" Height="100px" Style="position: absolute; top: 0; left: 0; object-fit: cover; margin: 10px;" AlternateText="LOGO" OnClick="ImageButton1_Click" ImageAlign="Left" />                    <button class="btn dropdown-toggle text-white" style="background-color: #0047B8;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Usuario
                     </button>
                     <ul class="dropdown-menu">
@@ -37,6 +36,9 @@
                 <div class="row">
                     <!-- Columna Izquierda - Sidebar -->
                     <nav class="col-md-3 col-lg-2 d-md-block sidebar" style="background-color: #0047B8;">
+                        <br />
+                        <br />
+                        <br />
                         <a href="Default.aspx">🏠 Inicio</a>
                         <a href="Reservas.aspx">📅 Planificacion</a>
                         <a href="Mensajes.aspx">📩 Mensajes</a>
