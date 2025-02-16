@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:UpdatePanel runat="server">
+    <asp:UpdatePanel runat="server" class="contenido-principal">
         <ContentTemplate>
 
-            <div class="container-fluid">
+            <div class="container-fluid ">
                 <h2>Filtro de búsqueda para reservar</h2>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
