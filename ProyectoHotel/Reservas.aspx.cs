@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -51,6 +53,7 @@ namespace ProyectoHotel
         {
             if (fechasReservadas.Contains(e.Day.Date))
             {
+                e.Day.IsSelectable = false;
                 e.Cell.BackColor = System.Drawing.Color.LightGreen; // Pinta en verde las fechas reservadas
                 e.Cell.ForeColor = System.Drawing.Color.White;
                 e.Cell.ToolTip = "Reservado";
@@ -68,7 +71,14 @@ namespace ProyectoHotel
         // Evento para confirmar la reserva al hacer clic en el botón
         protected void btnReservar_Click(object sender, EventArgs e)
         {
-            // Simula guardar en base de datos (puedes hacerlo en SQL Server)
+            if (fechasReservadas.Count > 0)
+            {
+                GuardarReservasEnBaseDeDatos();
+            }
+            else
+            {
+                lblReservas.Text = "No hay fechas seleccionadas para reservar.";
+            }
             lblReservas.Text = "Fechas reservadas: " + string.Join(", ", fechasReservadas.ConvertAll(f => f.ToString("dd/MM/yyyy")));
         }
 
@@ -86,5 +96,34 @@ namespace ProyectoHotel
             // Refrescar el calendario para mostrar cambios visuales
             Calendar1.DataBind();
         }
+
+        private void GuardarReservasEnBaseDeDatos()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                foreach (DateTime fecha in fechasReservadas)
+                {
+                    datos.setearConsulta("INSERT INTO FechasReservadas (Fecha) VALUES (@fecha)");
+                    datos.setearParametro("@fecha", fecha);
+                    datos.ejecutarAccion();
+                }
+
+                // Limpiar la lista después de guardar en la base
+                fechasReservadas.Clear();
+                Calendar1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
     }
 }
