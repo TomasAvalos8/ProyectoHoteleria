@@ -5,7 +5,7 @@
     <asp:UpdatePanel runat="server" class="contenido-principal">
         <ContentTemplate>
 
-            <div class="container-fluid ">
+      <%--      <div class="container-fluid ">
                 <h2>Filtro de búsqueda para reservar</h2>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -37,9 +37,55 @@
             <div class="calendar-footer-container">
                 <h3>Fechas Reservadas:</h3>
                 <asp:Label ID="lblReservas" runat="server" Text="Ninguna"></asp:Label>
+            </div>--%>
+
+
+<h1>Gestión de Habitaciones y Reservas</h1>
+
+<!-- Botón para agregar una habitación -->
+<asp:Button ID="btnAgregarHabitacion" runat="server" Text="Agregar Habitación" OnClick="btnAgregarHabitacion_Click" />
+
+<!-- GridView para mostrar las habitaciones -->
+<asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true">
+    <Columns>
+        <asp:BoundField DataField="Numero" HeaderText="Habitación" />
+        <asp:BoundField DataField="Estado" HeaderText="Estado" />
+    </Columns>
+</asp:GridView>
+
+          
+    <div class="modal fade" id="formularioModalAgregarHabitacion" tabindex="-1" aria-labelledby="formularioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-white text-dark">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formularioModalLabelAgregar">Agregar Habitacion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="txtNombre" class="form-label">Numero Habitacion</label>
+                        <asp:TextBox runat="server" ID="txtNumero" CssClass="form-control" />
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <asp:Button ID="btnaceptar" runat="server" Text="aceptar" OnClick="btnAceptar_Click" CssClass="btn btn-primary" />
+                </div>
             </div>
+        </div>
+    </div>
+
 
         </ContentTemplate>
+
+
+
+
+
+
+
+
+
     </asp:UpdatePanel>
 
 
