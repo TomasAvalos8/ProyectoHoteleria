@@ -45,15 +45,15 @@ namespace Dominio
                 datos.cerrarConexion();
             }
         }
-        public void AgregarHabitacion(string numero, string estado)
+        public void agregarConSP(Habitacion nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("INSERT INTO Habitaciones (numero, estado) VALUES (@numero, @estado)");
-                datos.setearParametro("@numero", numero);
-                datos.setearParametro("@estado", estado);
+                datos.setearProcedimiento("spAltaProducto");
+                datos.setearParametro("@Numero", nuevo.Numero);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -65,6 +65,7 @@ namespace Dominio
                 datos.cerrarConexion();
             }
         }
+
     }
 
 

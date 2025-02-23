@@ -42,10 +42,9 @@
 
 <h1>Gestión de Habitaciones y Reservas</h1>
 
-<!-- Botón para agregar una habitación -->
-<asp:Button ID="btnAgregarHabitacion" runat="server" Text="Agregar Habitación" OnClick="btnAgregarHabitacion_Click" />
 
-<!-- GridView para mostrar las habitaciones -->
+<button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#formularioModalAgregarHabitacion">Agregar Habitacion </button>
+
 <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true">
     <Columns>
         <asp:BoundField DataField="Numero" HeaderText="Habitación" />

@@ -46,7 +46,7 @@ namespace ProyectoHotel
                 negocio.agregarConSP(nuevo);
 
 
-                Response.Redirect("Productos.aspx", false);
+                Response.Redirect("Default.aspx", false);
             }
             catch (Exception)
             {
