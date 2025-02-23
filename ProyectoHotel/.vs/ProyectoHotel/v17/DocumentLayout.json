@@ -3,22 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\reservas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tbram\\documents\\facultad\\programacion iii\\proyectohoteleria\\proyectohotel\\reservas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:reservas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\reservas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:reservas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{04CA6C01-BC65-4825-88EE-7C036B21C6E0}|..\\Negocio\\Negocio.csproj|c:\\users\\tbram\\documents\\facultad\\programacion iii\\proyectohoteleria\\negocio\\habitacionnegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C65C516-F45F-4962-AC56-5E8183074E8C}|..\\Dominio\\Dominio.csproj|c:\\users\\tbram\\documents\\facultad\\programacion iii\\proyectohoteleria\\dominio\\habitacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|c:\\users\\tbram\\documents\\facultad\\programacion iii\\proyectohoteleria\\proyectohotel\\reservas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16044291-A3DD-4FBC-9D9C-A05D7CD92E2F}|ProyectoHotel.csproj|solutionrelative:reservas.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,7 +40,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Habitacion.cs",
               "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Dominio\\Habitacion.cs",
               "RelativeDocumentMoniker": "..\\Dominio\\Habitacion.cs",
@@ -57,41 +53,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "estilos.css",
-              "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\estilos.css",
-              "RelativeDocumentMoniker": "estilos.css",
-              "ToolTip": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\estilos.css",
-              "RelativeToolTip": "estilos.css",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-02-23T17:48:54.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Reservas.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\Reservas.aspx.cs",
-              "RelativeDocumentMoniker": "Reservas.aspx.cs",
-              "ToolTip": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\Reservas.aspx.cs",
-              "RelativeToolTip": "Reservas.aspx.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T14:55:03.733Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HabitacionNegocio.cs",
               "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Negocio\\HabitacionNegocio.cs",
               "RelativeDocumentMoniker": "..\\Negocio\\HabitacionNegocio.cs",
               "ToolTip": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\Negocio\\HabitacionNegocio.cs",
               "RelativeToolTip": "..\\Negocio\\HabitacionNegocio.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAADYAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAADkAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T14:53:36.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Reservas.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\Reservas.aspx.cs",
+              "RelativeDocumentMoniker": "Reservas.aspx.cs",
+              "ToolTip": "C:\\Users\\tbram\\Documents\\FACULTAD\\PROGRAMACION III\\ProyectoHoteleria\\ProyectoHotel\\Reservas.aspx.cs",
+              "RelativeToolTip": "Reservas.aspx.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAawC4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T14:55:03.733Z",
               "EditorCaption": ""
             },
             {

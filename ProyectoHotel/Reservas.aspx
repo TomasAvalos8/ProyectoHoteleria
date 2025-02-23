@@ -63,8 +63,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="txtNombre" class="form-label">Numero Habitacion</label>
+                        <label for="txtNombre" type="number" class="form-label">Numero habitacion</label>
                         <asp:TextBox runat="server" ID="txtNumero" CssClass="form-control" />
+                    </div>
+                     <div class="mb-3">
+                        <label for="txtCapacidad" class="form-label">Capacidad de la habitacion</label>
+                        <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtEstado" class="form-label">Estado de la habitacion</label>
+                        <asp:TextBox runat="server" ID="txtEstado" CssClass="form-control" />
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

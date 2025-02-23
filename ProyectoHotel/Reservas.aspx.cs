@@ -43,10 +43,12 @@ namespace ProyectoHotel
             try
             {
                 nuevo.Numero =int.Parse(txtNumero.Text);
+                nuevo.Capacidad =int.Parse(txtCapacidad.Text);
+                nuevo.Estado =txtEstado.Text;
                 negocio.agregarConSP(nuevo);
 
 
-                Response.Redirect("Default.aspx", false);
+                Response.Redirect("Reservas.aspx", false);
             }
             catch (Exception)
             {

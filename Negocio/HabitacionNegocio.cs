@@ -51,8 +51,11 @@ namespace Dominio
 
             try
             {
-                datos.setearProcedimiento("spAltaProducto");
+                datos.setearProcedimiento("sp_AgregarHabitacion");
                 datos.setearParametro("@Numero", nuevo.Numero);
+                datos.setearParametro("@Capacidad", nuevo.Capacidad);
+                datos.setearParametro("@Estado", nuevo.Estado);
+                datos.setearParametro("@Activo", nuevo.Activo);
 
                 datos.ejecutarAccion();
             }
