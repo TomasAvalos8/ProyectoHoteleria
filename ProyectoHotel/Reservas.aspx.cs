@@ -22,7 +22,7 @@ namespace ProyectoHotel
             //}
             if (!IsPostBack)
             {
-            CargarHabitaciones();
+                CargarHabitaciones();
             }
         }
 
@@ -42,9 +42,10 @@ namespace ProyectoHotel
             HabitacionNegocio negocio = new HabitacionNegocio();
             try
             {
-                nuevo.Numero =int.Parse(txtNumero.Text);
-                nuevo.Capacidad =int.Parse(txtCapacidad.Text);
-                nuevo.Estado =txtEstado.Text;
+                nuevo.Numero = int.Parse(txtNumero.Text);
+                nuevo.Capacidad = int.Parse(txtCapacidad.Text);
+                nuevo.Estado = txtEstado.Text;
+                nuevo.Activo = true;
                 negocio.agregarConSP(nuevo);
 
 
@@ -58,53 +59,17 @@ namespace ProyectoHotel
 
         }
 
+        protected void BtnRediReserva_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormularioReserva.aspx");
+        }
 
-        //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        //{
 
-        //    DateTime fechaSeleccionada = Calendar1.SelectedDate;
 
-        //    // Si la fecha ya está reservada, la quitamos (desseleccionar)
-        //    if (fechasReservadas.Contains(fechaSeleccionada))
-        //    {
-        //        fechasReservadas.Remove(fechaSeleccionada);
-        //    }
-        //    else
-        //    {
-        //        // Si la fecha no está reservada, la agregamos
-        //        fechasReservadas.Add(fechaSeleccionada);
-        //    }
 
-        //    Calendar1.SelectedDates.Clear();
 
-        //    // Actualizamos el label con las fechas reservadas
-        //    lblReservas.Text = fechasReservadas.Count > 0
-        //        ? string.Join(", ", fechasReservadas.ConvertAll(f => f.ToString("dd/MM/yyyy")))
-        //        : "Ninguna";
 
-        //    // Refrescar el calendario para mostrar cambios visuales
-        //    Calendar1.DataBind();
-        //}
 
-        //// Evento para personalizar la apariencia del calendario
-        //protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
-        //{
-        //    if (fechasReservadas.Contains(e.Day.Date))
-        //    {
-        //        //e.Day.IsSelectable = false;
-        //        e.Cell.BackColor = System.Drawing.Color.LightGreen; // Pinta en verde las fechas reservadas
-        //        e.Cell.ForeColor = System.Drawing.Color.White;
-        //        e.Cell.ToolTip = "Reservado";
-        //    }
-        //    // Deshabilitar fechas pasadas
-        //    if (e.Day.Date < DateTime.Today)
-        //    {
-        //        e.Day.IsSelectable = false; // No se puede seleccionar
-        //        e.Cell.BackColor = System.Drawing.Color.LightGray; // Fondo gris para diferenciar
-        //        e.Cell.ForeColor = System.Drawing.Color.DarkGray; // Texto gris
-        //        e.Cell.ToolTip = "Fecha no disponible"; // Tooltip informativo
-        //    }
-        //}
 
         //// Evento para confirmar la reserva al hacer clic en el botón
         //protected void btnReservar_Click(object sender, EventArgs e)
