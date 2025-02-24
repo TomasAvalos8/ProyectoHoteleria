@@ -11,26 +11,30 @@
                     <!-- Columna Izquierda - Inputs -->
                     <div class="col-md-6" style="margin:20px 0">
                         <div class="card p-4" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                            <h4 class="mb-4" style="color: #003399; font-weight: bold;">Datos de la Reserva</h4>
-                            <div class="mb-3">
+                            <h4  style="color: #003399; font-weight: bold; margin-bottom: 15px;margin-top:0;">Datos de la Reserva</h4>
+                            <div class="mb-1">
                                 <label for="txtNroHabitacion" class="form-label">Número de Habitación</label>
                                 <asp:TextBox runat="server" ID="txtNroHabitacion" CssClass="form-control" />
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <label for="txtCapacidad" class="form-label">Capacidad</label>
                                 <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" />
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <label for="txtPrecio" class="form-label">Precio por Noche</label>
                                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <label for="txtDNI" class="form-label">DNI Huésped</label>
-                                <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" />
+                                <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtDNI_TextChanged" />
                             </div>
-                            <div class="mb-3">
-                                <label for="txtNombre" class="form-label">Nombre Huésped</label>
+                            <div class="mb-1" >
+                                <label for="txtNombre" runat="server" class="form-label" ID="lblNombre">Nombre Huésped</label>
                                 <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
+                            </div>
+                            <div class="mb-1" >
+                                <label for="txtTelefono" runat="server" class="form-label" ID="lblTelefono">Telefono Huésped</label>
+                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" />
                             </div>
                         </div>
                     </div>

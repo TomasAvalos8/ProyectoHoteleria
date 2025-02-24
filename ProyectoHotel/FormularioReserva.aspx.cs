@@ -13,6 +13,7 @@ namespace ProyectoHotel
         private static DateTime? fechaIngreso = null;
         private static DateTime? fechaEgreso = null;
         private static List<DateTime> fechasReservadas = new List<DateTime>();
+        bool HuespedExistente = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,11 @@ namespace ProyectoHotel
                 fechasReservadas.Clear();
                 fechaIngreso = null;
                 fechaEgreso = null;
+                txtNombre.Visible = false;
+                lblNombre.Visible = false;
+                txtTelefono.Visible = false;
+                lblTelefono.Visible = false;
+
             }
         }
 
@@ -94,11 +100,18 @@ namespace ProyectoHotel
         {
             try
             {
-                int dniHuesped = int.Parse(txtDNI.Text);
                 int numeroHabitacion = int.Parse(txtNroHabitacion.Text);
+                int dniHuesped = int.Parse(txtDNI.Text);
+                string nombre = txtNombre.Text.ToString();
+                string telefono = txtTelefono.Text.ToString();
                 DateTime fechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
                 DateTime fechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
 
+
+                if (!HuespedExistente)
+                {
+                    AgregarHuesped(dniHuesped, nombre, telefono);
+                }
                 AgregarReserva(dniHuesped, numeroHabitacion, fechaIngreso, fechaEgreso);
             }
             catch (Exception ex)
@@ -128,6 +141,78 @@ namespace ProyectoHotel
             {
                 accesoDatos.cerrarConexion();
             }
+        }
+        
+        public void AgregarHuesped(int dniHuesped, string nombre,string telefono)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("Insert into Huesped (DNI,NombreCompleto,Telefono)VALUES(@DNI,@NombreCompleto,@Telefono)");
+                accesoDatos.setearParametro("@DNI", dniHuesped);
+                accesoDatos.setearParametro("@NombreCompleto", nombre);
+                accesoDatos.setearParametro("@Telefono", telefono);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar el huesped: " + ex.Message);
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        protected void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            int DNI = int.Parse(txtDNI.Text);
+
+            validarDNI(DNI);
+        }
+
+
+        public void validarDNI(int DNI)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                
+                datos.setearConsulta("SELECT DNI,NombreCompleto,Telefono FROM Huesped WHERE DNI = @DNI");
+                datos.setearParametro("@DNI", DNI);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    txtDNI.Enabled = false;
+                    txtNombre.Text = (string)datos.Lector["NombreCompleto"];
+                    txtNombre.Enabled = false;
+                    lblNombre.Visible = true;
+                    txtNombre.Visible = true;
+                    txtTelefono.Text = (string)datos.Lector["Telefono"];
+                    txtTelefono.Enabled = false;
+                    lblTelefono.Visible = true;
+                    txtTelefono.Visible = true;
+
+                    HuespedExistente = true;
+
+                }
+                lblNombre.Visible = true;
+                txtNombre.Visible = true;
+                lblTelefono.Visible = true;
+                txtTelefono.Visible = true;
+                HuespedExistente = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
     }
 }
