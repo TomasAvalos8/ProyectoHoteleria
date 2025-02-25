@@ -24,8 +24,8 @@ namespace ProyectoHotel
                 usuario = new Usuario(txtUsuario.Text, txtContraseña.Text, false);
                 if (negocio.Loguear(usuario))
                 {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("Pedidos.aspx");
+                    Session.Add("Usuario", usuario);
+                    Response.Redirect("Default.aspx",false);
                 }
                 else
                 {
