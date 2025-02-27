@@ -16,10 +16,7 @@ namespace ProyectoHotel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    lblReservas.Text = "Ninguna";
-            //}
+            
             if (!IsPostBack)
             {
                 CargarHabitaciones();
@@ -35,8 +32,6 @@ namespace ProyectoHotel
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-
-
 
             Habitacion nuevo = new Habitacion();
             HabitacionNegocio negocio = new HabitacionNegocio();
@@ -64,7 +59,7 @@ namespace ProyectoHotel
             Response.Redirect("FormularioReserva.aspx");
         }
 
-
+       
 
 
 

@@ -16,7 +16,7 @@ namespace Dominio
 
             try
             {
-                datos.setearConsulta("SELECT numero,Capacidad,Estado,Activo FROM Habitacion");
+                datos.setearConsulta("SELECT Numero,Capacidad,Estado,Activo FROM Habitacion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

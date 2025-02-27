@@ -5,26 +5,6 @@
     <asp:UpdatePanel runat="server" class="contenido-principal">
         <ContentTemplate>
 
-            <%--      <div class="container-fluid ">
-                <h2>Filtro de búsqueda para reservar</h2>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            <h2>Tabla de habitaciones con seleccionable</h2>
-
-            <!-- Calendario ASP.NET -->
-
-
-            <asp:Button ID="btnReservar" runat="server" Text="Reservar Fecha" OnClick="btnReservar_Click" />
-            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Fechas" OnClick="btnLimpiar_Click" />
-
-            <!-- Etiqueta para mostrar la fecha seleccionada -->
-            <div class="calendar-footer-container">
-                <h3>Fechas Reservadas:</h3>
-                <asp:Label ID="lblReservas" runat="server" Text="Ninguna"></asp:Label>
-            </div>--%>
 
 
             <h1>Gestión de Habitaciones y Reservas</h1>
@@ -35,6 +15,7 @@
 
             <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true">
                 <Columns>
+                   
                     <asp:BoundField DataField="Numero" HeaderText="Habitación" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
                 </Columns>

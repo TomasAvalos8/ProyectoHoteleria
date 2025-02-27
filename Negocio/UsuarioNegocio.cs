@@ -13,7 +13,7 @@ namespace Negocio
         {
             try
             {
-                datos.setearConsulta("Select Id, Usuario, Pass, TipoUsuario FROM Usuarios where Usuario = @User AND Pass = @Pass");
+                datos.setearConsulta("Select Id, Usuario, Contraseña, Administrador FROM Usuarios where Usuario = @User AND Contraseña = @Pass");
                 datos.setearParametro("@User", usuario.User);
                 datos.setearParametro("@Pass", usuario.Pass);
 
@@ -22,7 +22,7 @@ namespace Negocio
                 {
 
                     usuario.Id = (int)datos.Lector["Id"];
-                    usuario.tipoUsuario = (int)(datos.Lector["TipoUsuario"]) == 2 ? TipoUsuario.Admin : TipoUsuario.Normal;
+                    usuario.tipoUsuario = (int)(datos.Lector["Administrador"]) == 2 ? TipoUsuario.Admin : TipoUsuario.Normal;
                     return true;
                 }
                 return false;
