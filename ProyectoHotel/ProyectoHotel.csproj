@@ -71,6 +71,7 @@
     <Content Include="estilos.css" />
     <Content Include="FormularioReserva.aspx" />
     <Content Include="Imagenes\logo hoteleria.jpg" />
+    <Content Include="ListaReservas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Reservas.aspx" />
     <Content Include="Web.config" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="FormularioReserva.aspx.designer.cs">
       <DependentUpon>FormularioReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaReservas.aspx.cs">
+      <DependentUpon>ListaReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaReservas.aspx.designer.cs">
+      <DependentUpon>ListaReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

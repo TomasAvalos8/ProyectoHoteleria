@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ProyectoHotel
         private static DateTime? fechaIngreso = null;
         private static DateTime? fechaEgreso = null;
         private static List<DateTime> fechasReservadas = new List<DateTime>();
-        bool HuespedExistente = false;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -98,26 +99,33 @@ namespace ProyectoHotel
 
         protected void btnGuardarReserva_Click(object sender, EventArgs e)
         {
+            Reserva nuevo = new Reserva();
+            ReservaNegocio negocio = new ReservaNegocio();
             try
             {
-                int numeroHabitacion = int.Parse(txtNroHabitacion.Text);
-                int dniHuesped = int.Parse(txtDNI.Text);
+                nuevo.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
+                nuevo.DNI_Huesped = int.Parse(txtDNI.Text);
                 string nombre = txtNombre.Text.ToString();
                 string telefono = txtTelefono.Text.ToString();
-                DateTime fechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
-                DateTime fechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
+                nuevo.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
+                nuevo.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
 
 
-                if (!HuespedExistente)
+                if (!validarDNI(nuevo.DNI_Huesped))
                 {
-                    AgregarHuesped(dniHuesped, nombre, telefono);
+                    AgregarHuesped(nuevo.DNI_Huesped, nombre, telefono);
                 }
-                AgregarReserva(dniHuesped, numeroHabitacion, fechaIngreso, fechaEgreso);
+                negocio.AgregarReserva(nuevo);
+                Response.Redirect("ListaReservas.aspx", false);
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
+
+
+
+
         }
 
         public void AgregarReserva(int dniHuesped, int numeroHabitacion, DateTime fechaIngreso, DateTime fechaEgreso)
@@ -142,8 +150,8 @@ namespace ProyectoHotel
                 accesoDatos.cerrarConexion();
             }
         }
-        
-        public void AgregarHuesped(int dniHuesped, string nombre,string telefono)
+
+        public void AgregarHuesped(int dniHuesped, string nombre, string telefono)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
 
@@ -170,15 +178,16 @@ namespace ProyectoHotel
             int DNI = int.Parse(txtDNI.Text);
 
             validarDNI(DNI);
+
         }
 
 
-        public void validarDNI(int DNI)
+        public bool validarDNI(int DNI)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                
+
                 datos.setearConsulta("SELECT DNI,NombreCompleto,Telefono FROM Huesped WHERE DNI = @DNI");
                 datos.setearParametro("@DNI", DNI);
                 datos.ejecutarLectura();
@@ -194,14 +203,14 @@ namespace ProyectoHotel
                     lblTelefono.Visible = true;
                     txtTelefono.Visible = true;
 
-                    HuespedExistente = true;
+                    return true;
 
                 }
                 lblNombre.Visible = true;
                 txtNombre.Visible = true;
                 lblTelefono.Visible = true;
                 txtTelefono.Visible = true;
-                HuespedExistente = false;
+                return false;
             }
             catch (Exception)
             {
