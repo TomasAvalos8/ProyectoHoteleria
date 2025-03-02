@@ -18,16 +18,28 @@ namespace ProyectoHotel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] == null)
             {
-                fechasReservadas.Clear();
-                fechaIngreso = null;
-                fechaEgreso = null;
-                txtNombre.Visible = false;
-                lblNombre.Visible = false;
-                txtTelefono.Visible = false;
-                lblTelefono.Visible = false;
 
+                Session.Add("error", "debes iniciar sesion para ingresar");
+                Response.Redirect("Login.aspx", false);
+
+
+
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    fechasReservadas.Clear();
+                    fechaIngreso = null;
+                    fechaEgreso = null;
+                    txtNombre.Visible = false;
+                    lblNombre.Visible = false;
+                    txtTelefono.Visible = false;
+                    lblTelefono.Visible = false;
+
+                }
             }
         }
 

@@ -18,7 +18,7 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=HotelDB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=HotelDB; integrated security=true");
             comando = new SqlCommand();
         }
 

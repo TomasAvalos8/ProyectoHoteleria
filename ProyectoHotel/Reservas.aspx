@@ -37,13 +37,13 @@
                         <ItemTemplate>
 
                             <asp:LinkButton ID="btnEditar" runat="server" CommandName="Editar"
-                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
+                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-editar">
                     ✏️ Editar
                 </asp:LinkButton>
 
 
                             <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar"
-                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
+                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-eliminar">
                     🗑️ Eliminar
                 </asp:LinkButton>
                         </ItemTemplate>

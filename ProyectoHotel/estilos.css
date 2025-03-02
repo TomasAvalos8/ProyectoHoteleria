@@ -99,3 +99,83 @@ TABLA DGV
     }
 
 
+/* Estilo base para el botón de selección */
+.btn-accion {
+    display: inline-block;
+    padding: 8px 16px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #007bff; /* Color de fondo (azul) */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+    /* Cambiar el color de fondo al pasar el mouse */
+    .btn-accion:hover {
+        background-color: #0056b3; /* Azul más oscuro */
+    }
+
+    /* Cambiar el color de fondo al hacer clic */
+    .btn-accion:active {
+        background-color: #004080; /* Azul aún más oscuro */
+    }
+
+.btn-editar {
+    display: inline-block;
+    padding: 8px 16px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #007bff; /* Color de fondo (azul) */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+.btn-editar {
+    background-color: #28a745; /* Verde */
+}
+
+    .btn-editar:hover {
+        background-color: #218838; /* Verde más oscuro */
+    }
+
+    .btn-editar:active {
+        background-color: #1e7e34; /* Verde aún más oscuro */
+    }
+
+
+
+.btn-eliminar {
+    display: inline-block;
+    padding: 8px 16px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #007bff; /* Color de fondo (azul) */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+.btn-eliminar {
+    background-color: #FF0000; /* Verde */
+}
+
+    .btn-eliminar:hover {
+        background-color: #218838; /* Verde más oscuro */
+    }
+
+    .btn-eliminar:active {
+        background-color: #1e7e34; /* Verde aún más oscuro */
+    }

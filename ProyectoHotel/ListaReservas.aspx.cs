@@ -13,9 +13,21 @@ namespace ProyectoHotel
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            if (!IsPostBack)
+            if (Session["usuario"] == null)
             {
-                CargarReservas();
+
+                Session.Add("error", "debes iniciar sesion para ingresar");
+                Response.Redirect("Login.aspx", false);
+
+
+
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    CargarReservas();
+                }
             }
         }
         private void CargarReservas()
