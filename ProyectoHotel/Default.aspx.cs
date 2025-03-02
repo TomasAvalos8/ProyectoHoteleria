@@ -13,17 +13,19 @@ namespace ProyectoHotel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            if (Request.QueryString["logout"] == "true")
             {
-                Session.Add("error", "debes iniciar sesion para ingresar");
+                Session.Clear();
+                Session.Abandon();
                 Response.Redirect("Login.aspx");
             }
-            else
+
+            if (Session["usuario"] == null)
             {
-
-
-
+                Session.Add("error", "Debes iniciar sesión para ingresar");
+                Response.Redirect("Login.aspx");
             }
+            
 
 
 

@@ -13,11 +13,41 @@
             <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#formularioModalAgregarHabitacion">Agregar Habitacion </button>
             <asp:Button ID="BtnRediReserva" runat="server" Text="Agregar Reserva" CssClass="btn btn-secondary me-md-2" OnClick="BtnRediReserva_Click" />
 
-            <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true">
+            <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla"
+                OnRowCommand="gvHabitaciones_RowCommand">
                 <Columns>
-                   
+
+                    <asp:TemplateField HeaderText="Seleccionar">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnSeleccionar" runat="server" CommandName="Seleccionar"
+                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
+                    ✅ Seleccionar
+                </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+
                     <asp:BoundField DataField="Numero" HeaderText="Habitación" />
+
+
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
+
+
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+
+                            <asp:LinkButton ID="btnEditar" runat="server" CommandName="Editar"
+                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
+                    ✏️ Editar
+                </asp:LinkButton>
+
+
+                            <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar"
+                                CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
+                    🗑️ Eliminar
+                </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
 

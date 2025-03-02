@@ -16,7 +16,7 @@ namespace ProyectoHotel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 CargarHabitaciones();
@@ -59,7 +59,35 @@ namespace ProyectoHotel
             Response.Redirect("FormularioReserva.aspx");
         }
 
-       
+        protected void gvHabitaciones_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+
+            int index = Convert.ToInt32(e.CommandArgument);
+
+
+            GridViewRow row = gvHabitaciones.Rows[index];
+
+
+            if (e.CommandName == "Seleccionar")
+            {
+                string numeroHabitacion = row.Cells[1].Text;
+                string estado = row.Cells[2].Text;
+
+
+            }
+            else if (e.CommandName == "Editar")
+            {
+                string numeroHabitacion = row.Cells[1].Text;
+
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                string numeroHabitacion = row.Cells[1].Text;
+
+            }
+        }
+
 
 
 

@@ -24,7 +24,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Configuraciones</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item " style="background-color:#e02012; color:white" href="Default.aspx?logout=true">Cerrar sesión</a></li>
                 </ul>
             </div>
 
@@ -38,6 +38,7 @@
                     
                     <a href="Default.aspx" style="margin-top:10vh">🏠 Inicio</a>
                     <a href="Reservas.aspx">📅 Planificacion</a>
+                    <a href="ListaReservas.aspx">📅 Lista de Reservas</a>
                     <a href="Mensajes.aspx">📩 Mensajes</a>
                     <a href="Mensajes.aspx">📊 Informes</a>
                     <a href="Configuracion.aspx">⚙ Configuración</a>
