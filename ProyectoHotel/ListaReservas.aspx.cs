@@ -68,10 +68,10 @@ namespace ProyectoHotel
         {
             ReservaNegocio negocio = new ReservaNegocio();
             List<Reserva> lista = negocio.Listar();
-            
+
             foreach (var reserva in lista)
             {
-                if (fechaSeleccionada>=reserva.FechaIngreso && fechaSeleccionada<=reserva.FechaEgreso)
+                if (fechaSeleccionada >= reserva.FechaIngreso && fechaSeleccionada <= reserva.FechaEgreso)
                 {
                     txtNroHabitacion.Text = reserva.Numero_Habitacion.ToString();
                     txtCapacidad.Text = reserva.Capacidad.ToString();
@@ -104,6 +104,47 @@ namespace ProyectoHotel
                 e.Cell.ForeColor = System.Drawing.Color.DarkGray;
                 e.Cell.ToolTip = "Fecha no disponible";
             }
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            List<Reserva> lista = negocio.Listar();
+
+            
+            string filtroFecha = txtFiltroFecha.Text.Trim();
+            string filtroNroHabitacion = txtFiltroNroHabitacion.Text.Trim();
+            string filtroDNI = txtFiltroDNI.Text.Trim();
+
+            //Filtro fecha
+            if (!string.IsNullOrEmpty(filtroFecha) && DateTime.TryParse(filtroFecha, out DateTime fechaIngresada))
+            {
+                lista = lista.Where(r => r.FechaIngreso.Date <= fechaIngresada.Date&& r.FechaEgreso.Date >= fechaIngresada.Date).ToList();
+            }
+
+            //filtro nro habitacion 
+            if (!string.IsNullOrEmpty(filtroNroHabitacion) && int.TryParse(filtroNroHabitacion, out int nroHabitacion))
+            {
+                lista = lista.Where(r => r.Numero_Habitacion == nroHabitacion).ToList();
+            }
+            //filtro dni
+            if (!string.IsNullOrEmpty(filtroDNI) && int.TryParse(filtroDNI, out int DNI))
+            {
+                lista = lista.Where(r => r.DNI_Huesped == DNI).ToList();
+            }
+
+            
+            dgvReservas.DataSource = lista;
+            dgvReservas.DataBind();
+        }
+
+        // Método para limpiar filtros y recargar todas las reservas
+        protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            txtFiltroFecha.Text = "";
+            txtFiltroNroHabitacion.Text = "";
+            txtFiltroDNI.Text = "";
+            CargarReservas(); // Recargar todas las reservas sin filtro
         }
     }
 }

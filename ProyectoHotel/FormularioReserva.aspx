@@ -60,9 +60,9 @@
                             <!-- Fechas de Ingreso y Egreso -->
 
                             <label for="txtFechaIngreso" class="form-label" style="margin-top:10px">Fecha de Ingreso</label>
-                            <asp:TextBox runat="server" ID="txtFechaIngreso" CssClass="form-control" />
+                            <asp:TextBox runat="server" ID="txtFechaIngreso" CssClass="form-control" ReadOnly="true" placeholder="Seleccionar fecha en calendario"/>
                             <label for="txtFechaEgreso" class="form-label">Fecha de Egreso</label>
-                            <asp:TextBox runat="server" ID="txtFechaEgreso" CssClass="form-control" />
+                            <asp:TextBox runat="server" ID="txtFechaEgreso" CssClass="form-control" ReadOnly="true" placeholder="Seleccionar fecha en calendario"/>
 
                     <!-- Botones -->
 

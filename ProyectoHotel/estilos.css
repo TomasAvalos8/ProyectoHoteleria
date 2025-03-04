@@ -45,6 +45,9 @@ p {
 
 .contenido-principal {
     height: 90vh;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 
