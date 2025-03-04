@@ -33,28 +33,68 @@
                 <WeekendDayStyle BackColor="#CCCCFF" />
             </asp:Calendar>
 
-            <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#modalFechaSeleccionada">Agregar Habitacion </button>
+            <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#modalFechaSeleccionada">Detalles de la Reserva </button>
 
             <!-- Modal para mostrar información de la fecha seleccionada -->
-            <div class="modal fade show" id="modalFechaSeleccionada" tabindex="-1" aria-labelledby="modalLabel"
-                aria-hidden="true" runat="server" >
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <div class="modal fade" id="modalFechaSeleccionada" tabindex="-1" aria-labelledby="formularioModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content bg-white text-dark">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalLabel">Detalles de la Fecha Seleccionada</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            
+                            <div class="row">
+                                <!-- Primera columna -->
+                                <div class="col-md-6">
+                                    <div class="mb-1">
+                                        <label for="txtNroHabitacion" class="form-label">Número de Habitación</label>
+                                        <asp:TextBox runat="server" ID="txtNroHabitacion" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtCapacidad" class="form-label">Capacidad</label>
+                                        <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtPrecio" class="form-label">Precio por Noche</label>
+                                        <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtDNI" class="form-label">DNI Huésped</label>
+                                        <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <!-- Segunda columna -->
+                                <div class="col-md-6">
+                                    <div class="mb-1">
+                                        <label for="txtNombre" class="form-label">Nombre Huésped</label>
+                                        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtTelefono" class="form-label">Teléfono Huésped</label>
+                                        <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtFechaIngreso" class="form-label">Fecha de Ingreso</label>
+                                        <asp:TextBox runat="server" ID="txtFechaIngreso" CssClass="form-control" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="txtFechaEgreso" class="form-label">Fecha de Egreso</label>
+                                        <asp:TextBox runat="server" ID="txtFechaEgreso" CssClass="form-control"  />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="btnCerrarModal" runat="server" CssClass="btn btn-secondary" Text="Cerrar"  />
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+
 
 
         </ContentTemplate>

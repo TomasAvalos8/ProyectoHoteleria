@@ -11,29 +11,24 @@
 
 
             <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#formularioModalAgregarHabitacion">Agregar Habitacion </button>
-            <asp:Button ID="BtnRediReserva" runat="server" Text="Agregar Reserva" CssClass="btn btn-secondary me-md-2" OnClick="BtnRediReserva_Click" />
+            
 
             <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla"
                 OnRowCommand="gvHabitaciones_RowCommand">
                 <Columns>
 
-                    <asp:TemplateField HeaderText="Seleccionar">
+                    <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:LinkButton ID="btnSeleccionar" runat="server" CommandName="Seleccionar"
+                            <asp:LinkButton ID="btnSeleccionar" runat="server" CommandName="Agregar"
                                 CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
-                    ✅ Seleccionar
+                    ➕ Agregar Reserva
                 </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-
-
                     <asp:BoundField DataField="Numero" HeaderText="Habitación" />
-
-
+                    <asp:BoundField DataField="Capacidad" HeaderText="Capacidad" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
-
-
-                    <asp:TemplateField HeaderText="Acciones">
+                    <asp:TemplateField >
                         <ItemTemplate>
 
                             <asp:LinkButton ID="btnEditar" runat="server" CommandName="Editar"

@@ -106,7 +106,7 @@ TABLA DGV
     font-size: 14px; /* Tamaño de la fuente */
     font-weight: bold; /* Texto en negrita */
     color: #fff; /* Color del texto */
-    background-color: #007bff; /* Color de fondo (azul) */
+    background-color: #28a745; /* Color de fondo (azul) */
     border: none; /* Sin borde */
     border-radius: 4px; /* Bordes redondeados */
     text-decoration: none; /* Sin subrayado */
@@ -116,12 +116,12 @@ TABLA DGV
 
     /* Cambiar el color de fondo al pasar el mouse */
     .btn-accion:hover {
-        background-color: #0056b3; /* Azul más oscuro */
+        background-color: #218838 ; /* Azul más oscuro */
     }
 
     /* Cambiar el color de fondo al hacer clic */
     .btn-accion:active {
-        background-color: #004080; /* Azul aún más oscuro */
+        background-color: #1e7e34 ; /* Azul aún más oscuro */
     }
 
 .btn-editar {
@@ -139,16 +139,14 @@ TABLA DGV
 }
 
 
-.btn-editar {
-    background-color: #28a745; /* Verde */
-}
+
 
     .btn-editar:hover {
-        background-color: #218838; /* Verde más oscuro */
+        background-color: #0056b3; /* Verde más oscuro */
     }
 
     .btn-editar:active {
-        background-color: #1e7e34; /* Verde aún más oscuro */
+        background-color: #004080; /* Verde aún más oscuro */
     }
 
 
@@ -159,7 +157,7 @@ TABLA DGV
     font-size: 14px; /* Tamaño de la fuente */
     font-weight: bold; /* Texto en negrita */
     color: #fff; /* Color del texto */
-    background-color: #007bff; /* Color de fondo (azul) */
+    background-color: #FF0000; /* Color de fondo (azul) */
     border: none; /* Sin borde */
     border-radius: 4px; /* Bordes redondeados */
     text-decoration: none; /* Sin subrayado */
@@ -167,15 +165,10 @@ TABLA DGV
     transition: background-color 0.3s ease; /* Transición suave */
 }
 
-
-.btn-eliminar {
-    background-color: #FF0000; /* Verde */
-}
-
     .btn-eliminar:hover {
-        background-color: #218838; /* Verde más oscuro */
+        background-color: #ab0202;
     }
 
     .btn-eliminar:active {
-        background-color: #1e7e34; /* Verde aún más oscuro */
+        background-color: #780000;
     }

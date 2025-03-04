@@ -13,6 +13,7 @@ namespace ProyectoHotel
     {
         private static DateTime? fechaIngreso = null;
         private static DateTime? fechaEgreso = null;
+        private static List<DateTime> fechasSeleccionadas = new List<DateTime>();
         private static List<DateTime> fechasReservadas = new List<DateTime>();
 
 
@@ -31,7 +32,17 @@ namespace ProyectoHotel
             {
                 if (!IsPostBack)
                 {
-                    fechasReservadas.Clear();
+                    string numeroHabitacion = Session["NumeroHabitacion"] as string;
+                    string capacidad = Session["Capacidad"] as string;
+                    string estado = Session["Estado"] as string;
+
+                    txtNroHabitacion.Text = numeroHabitacion;
+                    txtNroHabitacion.ReadOnly = true;
+                    txtCapacidad.Text = capacidad;
+                    txtCapacidad.ReadOnly = true;
+                    
+                    CargarReservas();
+                    fechasSeleccionadas.Clear();
                     fechaIngreso = null;
                     fechaEgreso = null;
                     txtNombre.Visible = false;
@@ -42,7 +53,32 @@ namespace ProyectoHotel
                 }
             }
         }
+        private void CargarReservas()
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            List<Reserva> lista = negocio.Listar();
 
+
+            fechasReservadas.Clear();
+
+            // Agregar las fechas reservadas al calendario
+            foreach (var reserva in lista)
+            {
+                DateTime fechaIngreso = reserva.FechaIngreso;
+                DateTime fechaEgreso = reserva.FechaEgreso;
+                int Numero = reserva.Numero_Habitacion;
+                int numeroHabitacion;
+                if (int.TryParse(txtNroHabitacion.Text, out numeroHabitacion) && numeroHabitacion == Numero)
+                {
+                    {
+                        for (DateTime fecha = fechaIngreso; fecha <= fechaEgreso; fecha = fecha.AddDays(1))
+                        {
+                            fechasReservadas.Add(fecha);
+                        }
+                    }
+                }
+            }
+        }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             DateTime fechaSeleccionada = Calendar1.SelectedDate;
@@ -51,13 +87,13 @@ namespace ProyectoHotel
             {
                 fechaIngreso = fechaSeleccionada;
                 fechaEgreso = null;
-                fechasReservadas.Clear();
-                fechasReservadas.Add(fechaSeleccionada);
+                fechasSeleccionadas.Clear();
+                fechasSeleccionadas.Add(fechaSeleccionada);
             }
             else if (!fechaEgreso.HasValue)
             {
                 fechaEgreso = fechaSeleccionada;
-                fechasReservadas.Clear();
+                fechasSeleccionadas.Clear();
 
                 if (fechaIngreso > fechaEgreso)
                 {
@@ -70,7 +106,7 @@ namespace ProyectoHotel
                 // Agregar todas las fechas en el rango
                 for (DateTime date = fechaIngreso.Value; date <= fechaEgreso.Value; date = date.AddDays(1))
                 {
-                    fechasReservadas.Add(date);
+                    fechasSeleccionadas.Add(date);
                 }
             }
             else
@@ -78,8 +114,8 @@ namespace ProyectoHotel
                 // Si ya hay dos fechas seleccionadas, reiniciar
                 fechaIngreso = fechaSeleccionada;
                 fechaEgreso = null;
-                fechasReservadas.Clear();
-                fechasReservadas.Add(fechaSeleccionada);
+                fechasSeleccionadas.Clear();
+                fechasSeleccionadas.Add(fechaSeleccionada);
             }
 
             ActualizarFechasTextBox();
@@ -94,10 +130,17 @@ namespace ProyectoHotel
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            if (fechasReservadas.Contains(e.Day.Date))
+            if (fechasSeleccionadas.Contains(e.Day.Date))
             {
                 e.Cell.BackColor = System.Drawing.Color.LightGreen;
                 e.Cell.ForeColor = System.Drawing.Color.White;
+                e.Cell.ToolTip = "Seleccionado";
+            }
+            if (fechasReservadas.Contains(e.Day.Date))
+            {
+                e.Cell.BackColor = System.Drawing.Color.DarkRed;
+                e.Cell.ForeColor = System.Drawing.Color.White;
+                e.Day.IsSelectable = false;
                 e.Cell.ToolTip = "Reservado";
             }
             if (e.Day.Date < DateTime.Today)
@@ -234,6 +277,11 @@ namespace ProyectoHotel
                 datos.cerrarConexion();
             }
 
+        }
+
+        protected void txtNroHabitacion_TextChanged(object sender, EventArgs e)
+        {
+            CargarReservas();
         }
     }
 }

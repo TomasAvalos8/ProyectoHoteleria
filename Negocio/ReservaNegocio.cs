@@ -17,9 +17,10 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta(@"SELECT r.Id, r.DNI_Huesped, h.NombreCompleto, r.Numero_Habitacion, r.FechaIngreso, r.FechaEgreso
+                datos.setearConsulta(@"SELECT hab.Capacidad, r.Id, r.DNI_Huesped, h.NombreCompleto,h.Telefono, r.Numero_Habitacion, r.FechaIngreso, r.FechaEgreso
             FROM Reserva r
-            INNER JOIN Huesped h ON r.DNI_Huesped = h.DNI");
+            INNER JOIN Huesped h ON r.DNI_Huesped = h.DNI
+            INNER JOIN Habitacion hab ON r.Numero_Habitacion = hab.Numero");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -29,7 +30,9 @@ namespace Negocio
                         Id = (int)datos.Lector["Id"],
                         DNI_Huesped = (int)datos.Lector["DNI_Huesped"],
                         Nombre_Huesped = datos.Lector["NombreCompleto"].ToString(),
+                        Telefono = datos.Lector["Telefono"].ToString(),
                         Numero_Habitacion = (int)datos.Lector["Numero_Habitacion"],
+                        Capacidad = (int)datos.Lector["Capacidad"],
                         FechaIngreso = (DateTime)datos.Lector["FechaIngreso"],
                         FechaEgreso = (DateTime)datos.Lector["FechaEgreso"]
 

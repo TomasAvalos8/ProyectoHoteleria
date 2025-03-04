@@ -13,6 +13,9 @@ namespace ProyectoHotel
     public partial class Reservas : System.Web.UI.Page
     {
         private static List<DateTime> fechasReservadas = new List<DateTime>();
+        private string numeroHabitacion;
+        private string capacidad;
+        private string estado;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -65,10 +68,7 @@ namespace ProyectoHotel
 
         }
 
-        protected void BtnRediReserva_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("FormularioReserva.aspx");
-        }
+
 
         protected void gvHabitaciones_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -80,22 +80,24 @@ namespace ProyectoHotel
             GridViewRow row = gvHabitaciones.Rows[index];
 
 
-            if (e.CommandName == "Seleccionar")
+            if (e.CommandName == "Agregar")
             {
-                string numeroHabitacion = row.Cells[1].Text;
-                string estado = row.Cells[2].Text;
+                Session["NumeroHabitacion"] = row.Cells[1].Text;
+                Session["Capacidad"] = row.Cells[2].Text;
+                Session["Estado"] = row.Cells[3].Text;
 
+                Response.Redirect("FormularioReserva.aspx");
 
             }
             else if (e.CommandName == "Editar")
             {
-                string numeroHabitacion = row.Cells[1].Text;
-
+                numeroHabitacion = row.Cells[1].Text;
+                capacidad = row.Cells[2].Text;
             }
             else if (e.CommandName == "Eliminar")
             {
-                string numeroHabitacion = row.Cells[1].Text;
-
+                numeroHabitacion = row.Cells[1].Text;
+                capacidad = row.Cells[2].Text;
             }
         }
 
@@ -105,60 +107,7 @@ namespace ProyectoHotel
 
 
 
-        //// Evento para confirmar la reserva al hacer clic en el botón
-        //protected void btnReservar_Click(object sender, EventArgs e)
-        //{
-        //    if (fechasReservadas.Count > 0)
-        //    {
-        //        GuardarReservasEnBaseDeDatos();
-        //    }
-        //    else
-        //    {
-        //        lblReservas.Text = "No hay fechas seleccionadas para reservar.";
-        //    }
-        //    lblReservas.Text = "Fechas reservadas: " + string.Join(", ", fechasReservadas.ConvertAll(f => f.ToString("dd/MM/yyyy")));
-        //}
 
-        //protected void btnLimpiar_Click(object sender, EventArgs e)
-        //{
-        //    // Limpiar la lista de fechas reservadas
-        //    fechasReservadas.Clear();
-
-        //    // Limpiar la selección del calendario
-        //    Calendar1.SelectedDates.Clear();
-
-        //    // Actualizar el label para mostrar que no hay reservas
-        //    lblReservas.Text = "Ninguna";
-
-        //    // Refrescar el calendario para mostrar cambios visuales
-        //    Calendar1.DataBind();
-        //}
-
-        //private void GuardarReservasEnBaseDeDatos()
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
-        //    try
-        //    {
-        //        foreach (DateTime fecha in fechasReservadas)
-        //        {
-        //            datos.setearConsulta("INSERT INTO FechasReservadas (Fecha) VALUES (@fecha)");
-        //            datos.setearParametro("@fecha", fecha);
-        //            datos.ejecutarAccion();
-        //        }
-
-        //        // Limpiar la lista después de guardar en la base
-        //        fechasReservadas.Clear();
-        //        Calendar1.DataBind();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
 
 
 

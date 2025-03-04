@@ -14,7 +14,7 @@
                             <h4  style="color: #003399; font-weight: bold; margin-bottom: 15px;margin-top:0;">Datos de la Reserva</h4>
                             <div class="mb-1">
                                 <label for="txtNroHabitacion" class="form-label">Número de Habitación</label>
-                                <asp:TextBox runat="server" ID="txtNroHabitacion" CssClass="form-control" />
+                                <asp:TextBox runat="server" ID="txtNroHabitacion" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtNroHabitacion_TextChanged"/>
                             </div>
                             <div class="mb-1">
                                 <label for="txtCapacidad" class="form-label">Capacidad</label>

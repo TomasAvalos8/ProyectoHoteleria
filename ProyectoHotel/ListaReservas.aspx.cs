@@ -47,10 +47,10 @@ namespace ProyectoHotel
             // Agregar las fechas reservadas al calendario
             foreach (var reserva in lista)
             {
-                DateTime fechaInicio = reserva.FechaIngreso;
-                DateTime fechaFin = reserva.FechaEgreso;
+                DateTime fechaIngreso = reserva.FechaIngreso;
+                DateTime fechaEgreso = reserva.FechaEgreso;
 
-                for (DateTime fecha = fechaInicio; fecha <= fechaFin; fecha = fecha.AddDays(1))
+                for (DateTime fecha = fechaIngreso; fecha <= fechaEgreso; fecha = fecha.AddDays(1))
                 {
                     fechasReservadas.Add(fecha);
                 }
@@ -60,15 +60,42 @@ namespace ProyectoHotel
         {
             DateTime fechaSeleccionada = Calendar1.SelectedDate;
 
-           
+            DetallesReserva(fechaSeleccionada);
+
+        }
+
+        protected void DetallesReserva(DateTime fechaSeleccionada)
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            List<Reserva> lista = negocio.Listar();
+            
+            foreach (var reserva in lista)
+            {
+                if (fechaSeleccionada>=reserva.FechaIngreso && fechaSeleccionada<=reserva.FechaEgreso)
+                {
+                    txtNroHabitacion.Text = reserva.Numero_Habitacion.ToString();
+                    txtCapacidad.Text = reserva.Capacidad.ToString();
+                    //txtPrecio.Text = reserva..ToString();
+                    txtDNI.Text = reserva.DNI_Huesped.ToString();
+                    txtNombre.Text = reserva.Nombre_Huesped.ToString();
+                    txtTelefono.Text = reserva.Telefono.ToString();
+                    txtFechaIngreso.Text = reserva.FechaIngreso.ToString("dd/MM/yyyy");
+                    txtFechaEgreso.Text = reserva.FechaEgreso.ToString("dd/MM/yyyy");
+                    break;
+                }
+            }
         }
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
             if (fechasReservadas.Contains(e.Day.Date))
             {
-                e.Cell.BackColor = System.Drawing.Color.Red;
+                e.Cell.BackColor = System.Drawing.Color.DarkRed;
                 e.Cell.ForeColor = System.Drawing.Color.White;
                 e.Cell.ToolTip = "Reservado";
+            }
+            if (!fechasReservadas.Contains(e.Day.Date))
+            {
+                e.Day.IsSelectable = false;
             }
             if (e.Day.Date < DateTime.Today)
             {
