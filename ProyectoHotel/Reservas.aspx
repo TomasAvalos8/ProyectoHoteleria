@@ -11,7 +11,7 @@
 
             <asp:Button ID="btnAgregarHabitacion" runat="server"
                 Text="Agregar Habitación"
-                CssClass="btn btn-success me-md-2"
+                CssClass="btn btn-success ms-3"
                 OnClick="btnAgregarHabitacion_Click"></asp:Button>
 
 
@@ -54,7 +54,8 @@
                     <div class="modal-content bg-white text-dark">
 
                         <div class="modal-header">
-                            <h5 class="modal-title" id="formularioModalLabelAgregar">Agregar Habitacion</h5>
+                            <h5 class="modal-title" id="tituloAgregar" runat="server">Agregar Habitacion</h5>
+                            <h5 class="modal-title" id="tituloEditar"  runat="server">Editar Habitacion</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -75,6 +76,35 @@
                                 <asp:Button ID="btnaceptar" runat="server" Text="Guardar" OnClick="btnAceptar_Click" CssClass="btn btn-primary" />
                                 <asp:Button ID="btnEditar" runat="server" Text="Aceptar Cambios" OnClick="btnEditar_Click" CssClass="btn btn-primary" Visible="false" />
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="EliminarHabitacion" tabindex="-1" aria-labelledby="formularioModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-white text-dark">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="EliminarHab">Eliminar Habitacion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+
+                                <label for="txtNro" type="number" class="form-label">Numero Habitación</label>
+                                <asp:TextBox runat="server" ID="txtNro" CssClass="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-3 text-center">
+                                    <label class="form-label">¿Está seguro que desea eliminar la habitación seleccionada?</label>
+                                </div>
+                                <div class="d-flex justify-content-around mt-3">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <asp:Button ID="btnEHabitacion" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEHabitacion_Click" />
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs" id="myTab" role="tablist" sytle="with:100%">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="registro-tab" data-bs-toggle="tab" data-bs-target="#registro" type="button" role="tab">Registro</button>
         </li>
@@ -18,7 +18,7 @@
 
 
 
-            <div class="row justify-content-left" ">
+            <div class="row justify-content-center" style="width:100%">
 
                 <div class="col-4">
 
@@ -60,16 +60,7 @@
 
                     </script>
                     <div class="mb-3">
-                        <label class="form-label">Tipo usuario</label>
-                        <div class="col-5">
-                            <div class="mb-3">
-
-                                <asp:DropDownList ID="dropOpciones" runat="server" CssClass="form-control">
-                                    <asp:ListItem Text="Seleccione un tipo de usuario" Value="0" />
-                                    <asp:ListItem Text="Admin" Value="2" />
-                                    <asp:ListItem Text="Recepcionista" Value="1" />
-                                </asp:DropDownList>
-                            </div>
+                        <div class="col-6">
 
                             <asp:Button Text="Registrar" CssClass="btn btn-primary" ID="btnRegistrarse" OnClick="btnRegistrarse_Click" runat="server" />
                             <a href="Default.aspx">cancelar</a>

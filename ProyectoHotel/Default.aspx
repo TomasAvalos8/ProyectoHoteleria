@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="d-flex align-items-center justify-content-center contenido-principal" >
+
         <div class="card mb-3 mx-2" style="max-width: 18rem;">
             <div class="card-header bg-success text-white">Entradas</div>
             <div class="card-body bg-white">
@@ -10,6 +11,8 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
+
+
         <div class="card mb-3 mx-2" style="max-width: 18rem;">
             <div class="card-header bg-danger text-white">Salidas</div>
             <div class="card-body bg-white">
@@ -26,10 +29,5 @@
         </div>
 
     </div>
-
-
-
-
-
 
 </asp:Content>

@@ -25,8 +25,6 @@ namespace ProyectoHotel
                 Session.Add("error", "Debes iniciar sesión para ingresar");
                 Response.Redirect("Login.aspx");
             }
-            
-
 
 
         }

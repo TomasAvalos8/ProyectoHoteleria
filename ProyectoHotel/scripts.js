@@ -1,3 +1,3 @@
-﻿function abrirModal() {
-    $('#formularioModalAgregarHabitacion').modal('show');
+﻿function abrirModal(modalId) {
+    $('#' + modalId).modal('show');
 }

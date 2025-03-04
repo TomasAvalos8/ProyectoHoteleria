@@ -23,9 +23,9 @@ namespace Dominio
                 {
                     Habitacion habitacion = new Habitacion
                     {
-                        Numero= (int)datos.Lector["Numero"],
-                        Capacidad= (int)datos.Lector["Capacidad"],
-                        Estado= datos.Lector["Estado"].ToString(),
+                        Numero = (int)datos.Lector["Numero"],
+                        Capacidad = (int)datos.Lector["Capacidad"],
+                        Estado = datos.Lector["Estado"].ToString(),
                         Activo = (bool)datos.Lector["Activo"],
 
 
@@ -68,6 +68,48 @@ namespace Dominio
                 datos.cerrarConexion();
             }
         }
+        public void modificarConSP(Habitacion modificada)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("sp_ModificarHabitacion");
+                datos.setearParametro("@Numero", modificada.Numero);
+                datos.setearParametro("@Capacidad", modificada.Capacidad);
+                datos.setearParametro("@Estado", modificada.Estado);
+                datos.setearParametro("@Activo", modificada.Activo);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminarConSP(int numeroHabitacion)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_EliminarHabitacion");
+                datos.setearParametro("@Numero", numeroHabitacion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
     }
 

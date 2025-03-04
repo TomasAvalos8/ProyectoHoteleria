@@ -42,6 +42,24 @@ namespace ProyectoHotel
         protected global::System.Web.UI.WebControls.GridView gvHabitaciones;
 
         /// <summary>
+        /// Control tituloAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloAgregar;
+
+        /// <summary>
+        /// Control tituloEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloEditar;
+
+        /// <summary>
         /// Control txtNumero.
         /// </summary>
         /// <remarks>
@@ -85,5 +103,23 @@ namespace ProyectoHotel
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditar;
+
+        /// <summary>
+        /// Control txtNro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNro;
+
+        /// <summary>
+        /// Control btnEHabitacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEHabitacion;
     }
 }

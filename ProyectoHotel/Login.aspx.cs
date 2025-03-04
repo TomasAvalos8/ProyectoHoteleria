@@ -25,7 +25,7 @@ namespace ProyectoHotel
                 if (negocio.Loguear(usuario))
                 {
                     Session.Add("Usuario", usuario);
-                    Response.Redirect("Default.aspx",false);
+                    Response.Redirect("Default.aspx", false);
                 }
                 else
                 {
@@ -41,5 +41,9 @@ namespace ProyectoHotel
             }
         }
 
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormularioRegistro.aspx", false);
+        }
     }
 }

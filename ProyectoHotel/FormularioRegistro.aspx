@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoHotel.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormularioRegistro.aspx.cs" Inherits="ProyectoHotel.FormularioRegistro" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,6 @@
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="#" rel="stylesheet" />
 </head>
 <body>
  <header>
@@ -25,22 +24,19 @@
             <div class="col-4">
                 <div class="mb-3">
                     <label for="txtUsuario" class="form-label">Usuario</label>
-                    <asp:TextBox runat="server" type="text" CssClass="form-control" ID="txtUsuario" aria-describedby="emailHelp" />
+                    <asp:TextBox runat="server" type="text" CssClass="form-control" ID="txtUser" aria-describedby="emailHelp" />
 
 
                 </div>
                 <div class="mb-3">
                     <label for="txtContraseña" class="form-label">Contraseña</label>
-                    <asp:TextBox runat="server" type="password" CssClass="form-control" ID="txtContraseña" />
+                    <asp:TextBox runat="server" type="password" CssClass="form-control" ID="txtPass" />
                 </div>
 
-                <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" />
-
-                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
-
+                <asp:Button ID="btnRegistrar" runat="server" Text="Registrarme" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                
             </div>
-            <div class="col-2">
-            </div>
+            <div class="col-4"></div>
         </div>
     </form>
 </body>

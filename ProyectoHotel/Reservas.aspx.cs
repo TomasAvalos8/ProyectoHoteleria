@@ -67,7 +67,46 @@ namespace ProyectoHotel
             }
 
         }
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Habitacion modificada = new Habitacion();
+            HabitacionNegocio negocio = new HabitacionNegocio();
+            try
+            {
+                modificada.Numero = int.Parse(txtNumero.Text);
+                modificada.Capacidad = int.Parse(txtCapacidad.Text);
+                modificada.Estado = txtEstado.Text;
+                modificada.Activo = true;
+                negocio.modificarConSP(modificada);
 
+
+                Response.Redirect("Reservas.aspx", false);
+            }
+            catch (Exception)
+            {
+                string script = "alert('Por favor, completa el campo.');";
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+            }
+        }
+
+        protected void btnEHabitacion_Click(object sender, EventArgs e)
+        {
+            
+            HabitacionNegocio negocio = new HabitacionNegocio();
+            try
+            {
+                int Numero = int.Parse(txtNro.Text);
+            
+                negocio.eliminarConSP(Numero);
+
+
+                Response.Redirect("Reservas.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
         protected void gvHabitaciones_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -85,7 +124,6 @@ namespace ProyectoHotel
                 Session["NumeroHabitacion"] = row.Cells[1].Text;
                 Session["Capacidad"] = row.Cells[2].Text;
                 Session["Estado"] = row.Cells[3].Text;
-
                 Response.Redirect("FormularioReserva.aspx");
 
             }
@@ -100,20 +138,22 @@ namespace ProyectoHotel
                 txtEstado.Text = estado;
                 btnaceptar.Visible = false;
                 btnEditar.Visible = true;
-                string script = "abrirModal();";
+                tituloAgregar.Style["display"] = "none";
+                tituloEditar.Style["display"] = "block";
+                string script = "abrirModal('formularioModalAgregarHabitacion');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
             }
             else if (e.CommandName == "Eliminar")
             {
                 numeroHabitacion = row.Cells[1].Text;
-                capacidad = row.Cells[2].Text;
+                txtNro.Text = numeroHabitacion;
+                txtNro.ReadOnly = true;
+                string script = "abrirModal('EliminarHabitacion');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
             }
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
-        {
 
-        }
 
         protected void btnAgregarHabitacion_Click(object sender, EventArgs e)
         {
@@ -121,9 +161,12 @@ namespace ProyectoHotel
             txtCapacidad.Text = "";
             txtEstado.Text = "";
             btnaceptar.Visible = true;
-            btnEditar.Visible =false;
-            string script = "abrirModal();";
+            btnEditar.Visible = false;
+            tituloAgregar.Style["display"] = "block";
+            tituloEditar.Style["display"] = "none";
+            string script = "abrirModal('formularioModalAgregarHabitacion');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
         }
+
     }
 }

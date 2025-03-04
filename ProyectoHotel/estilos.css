@@ -3,12 +3,10 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    /*overflow:hidden;*/
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Usa Roboto como fuente principal */
-
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -22,13 +20,13 @@ header {
 
 
 h1 {
-    font-family: 'Libre Baskerville', serif; /* Usa Libre Baskerville para títulos */
-    font-weight: 700; /* Negrita */
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
 }
 
 p {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
 }
 
 
@@ -46,49 +44,42 @@ p {
     }
 
 .contenido-principal {
-    /*Le da una altura acorde a la pagina*/
     height: 90vh;
 }
 
 
-/*
-TABLA DGV
-*/
 
-/* Estilos generales para la tabla */
 .mi-tabla {
     width: 100%;
-    border-collapse: collapse; /* Elimina el espacio entre celdas */
+    border-collapse: collapse;
     font-family: Arial, sans-serif;
     margin: 20px 0;
 }
 
-    /* Estilos para las celdas de encabezado */
+
     .mi-tabla th {
-        background-color: #003b95; /* Color de fondo */
-        color: white; /* Color del texto */
-        padding: 12px; /* Espaciado interno */
-        text-align: left; /* Alineación del texto */
-        border: 1px solid #ddd; /* Borde */
+        background-color: #003b95;
+        color: white;
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
     }
 
-    /* Estilos para las celdas de datos */
+
     .mi-tabla td {
-        padding: 10px; /* Espaciado interno */
-        border: 1px solid #ddd; /* Borde */
+        padding: 10px;
+        border: 1px solid #ddd;
     }
 
-    /* Estilos para las filas alternas (efecto zebra) */
     .mi-tabla tr:nth-child(even) {
-        background-color: #f2f2f2; /* Color de fondo para filas pares */
+        background-color: #f2f2f2;
     }
 
-    /* Estilos al pasar el mouse sobre una fila */
     .mi-tabla tr:hover {
-        background-color: #ddd; /* Color de fondo al pasar el mouse */
+        background-color: #ddd;
     }
 
-    /* Estilos para la paginación (si usas paginación) */
+
     .mi-tabla .pager {
         background-color: #4CAF50;
         color: white;
@@ -97,70 +88,70 @@ TABLA DGV
     }
 
 
-/* Estilo base para el botón de selección */
+
 .btn-accion {
     display: inline-block;
-    padding: 8px 16px; /* Espaciado interno */
-    font-size: 14px; /* Tamaño de la fuente */
-    font-weight: bold; /* Texto en negrita */
-    color: #fff; /* Color del texto */
-    background-color: #28a745; /* Color de fondo (azul) */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Transición suave */
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-    /* Cambiar el color de fondo al pasar el mouse */
+
     .btn-accion:hover {
-        background-color: #218838; /* Azul más oscuro */
+        background-color: #218838;
     }
 
-    /* Cambiar el color de fondo al hacer clic */
+
     .btn-accion:active {
-        background-color: #1e7e34; /* Azul aún más oscuro */
+        background-color: #1e7e34;
     }
 
 .btn-editar {
     display: inline-block;
-    padding: 8px 16px; /* Espaciado interno */
-    font-size: 14px; /* Tamaño de la fuente */
-    font-weight: bold; /* Texto en negrita */
-    color: #fff; /* Color del texto */
-    background-color: #007bff; /* Color de fondo (azul) */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Transición suave */
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 
 
 
     .btn-editar:hover {
-        background-color: #0056b3; /* Verde más oscuro */
+        background-color: #0056b3;
     }
 
     .btn-editar:active {
-        background-color: #004080; /* Verde aún más oscuro */
+        background-color: #004080;
     }
 
 
 
 .btn-eliminar {
     display: inline-block;
-    padding: 8px 16px; /* Espaciado interno */
-    font-size: 14px; /* Tamaño de la fuente */
-    font-weight: bold; /* Texto en negrita */
-    color: #fff; /* Color del texto */
-    background-color: #FF0000; /* Color de fondo (azul) */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Transición suave */
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FF0000;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
     .btn-eliminar:hover {
@@ -173,7 +164,7 @@ TABLA DGV
 
 .nav-tabs {
     background-color: #003b95;
-    border-radius: 10px;
+    border-radius: 0;
     padding: 5px;
 }
 

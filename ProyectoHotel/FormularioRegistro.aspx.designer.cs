@@ -11,17 +11,26 @@ namespace ProyectoHotel
 {
 
 
-    public partial class Configuracion
+    public partial class FormularioRegistro
     {
 
         /// <summary>
-        /// Control txtUsuer.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuer;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// Control txtUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUser;
 
         /// <summary>
         /// Control txtPass.
@@ -33,12 +42,12 @@ namespace ProyectoHotel
         protected global::System.Web.UI.WebControls.TextBox txtPass;
 
         /// <summary>
-        /// Control btnRegistrarse.
+        /// Control btnRegistrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrarse;
+        protected global::System.Web.UI.WebControls.Button btnRegistrar;
     }
 }
