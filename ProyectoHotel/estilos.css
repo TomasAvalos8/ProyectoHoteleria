@@ -1,22 +1,23 @@
 ﻿html, body, form {
-    height:100vh;
-   width:100%;
-    margin:0;
-    padding:0;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     /*overflow:hidden;*/
 }
+
 body {
     font-family: 'Roboto', sans-serif; /* Usa Roboto como fuente principal */
-   
-    display:flex;
-    flex-direction:column;
+
+    display: flex;
+    flex-direction: column;
 }
+
 header {
     width: 100%;
     height: 10vh;
-    align-content:center;
-    justify-content:center;
-    
+    align-content: center;
+    justify-content: center;
 }
 
 
@@ -33,11 +34,8 @@ p {
 
 
 .sidebar {
-     
     background-color: #003b95;
-   
-    height:90vh;
-    
+    height: 90vh;
 }
 
     .sidebar a {
@@ -67,7 +65,7 @@ TABLA DGV
 
     /* Estilos para las celdas de encabezado */
     .mi-tabla th {
-        background-color: #4CAF50; /* Color de fondo */
+        background-color: #003b95; /* Color de fondo */
         color: white; /* Color del texto */
         padding: 12px; /* Espaciado interno */
         text-align: left; /* Alineación del texto */
@@ -116,12 +114,12 @@ TABLA DGV
 
     /* Cambiar el color de fondo al pasar el mouse */
     .btn-accion:hover {
-        background-color: #218838 ; /* Azul más oscuro */
+        background-color: #218838; /* Azul más oscuro */
     }
 
     /* Cambiar el color de fondo al hacer clic */
     .btn-accion:active {
-        background-color: #1e7e34 ; /* Azul aún más oscuro */
+        background-color: #1e7e34; /* Azul aún más oscuro */
     }
 
 .btn-editar {
@@ -172,3 +170,29 @@ TABLA DGV
     .btn-eliminar:active {
         background-color: #780000;
     }
+
+.nav-tabs {
+    background-color: #003b95;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+    .nav-tabs .nav-link {
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #0056b3;
+            color: white;
+                    
+        }

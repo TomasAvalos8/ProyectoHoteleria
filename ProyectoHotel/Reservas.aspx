@@ -9,9 +9,11 @@
 
             <h1>Gestión de Habitaciones y Reservas</h1>
 
+            <asp:Button ID="btnAgregarHabitacion" runat="server"
+                Text="Agregar Habitación"
+                CssClass="btn btn-success me-md-2"
+                OnClick="btnAgregarHabitacion_Click"></asp:Button>
 
-            <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#formularioModalAgregarHabitacion">Agregar Habitacion </button>
-            
 
             <asp:GridView ID="gvHabitaciones" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla"
                 OnRowCommand="gvHabitaciones_RowCommand">
@@ -22,25 +24,25 @@
                             <asp:LinkButton ID="btnSeleccionar" runat="server" CommandName="Agregar"
                                 CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-accion">
                     ➕ Agregar Reserva
-                </asp:LinkButton>
+                            </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Numero" HeaderText="Habitación" />
                     <asp:BoundField DataField="Capacidad" HeaderText="Capacidad" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                    <asp:TemplateField >
+                    <asp:TemplateField>
                         <ItemTemplate>
 
                             <asp:LinkButton ID="btnEditar" runat="server" CommandName="Editar"
                                 CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-editar">
                     ✏️ Editar
-                </asp:LinkButton>
+                            </asp:LinkButton>
 
 
                             <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar"
                                 CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-eliminar">
                     🗑️ Eliminar
-                </asp:LinkButton>
+                            </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -57,7 +59,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="txtNombre" type="number" class="form-label">Numero habitacion</label>
+                                <label for="txtNumero" type="number" class="form-label">Numero habitacion</label>
                                 <asp:TextBox runat="server" ID="txtNumero" CssClass="form-control" />
                             </div>
                             <div class="mb-3">
@@ -70,7 +72,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <asp:Button ID="btnaceptar" runat="server" Text="aceptar" OnClick="btnAceptar_Click" CssClass="btn btn-primary" />
+                                <asp:Button ID="btnaceptar" runat="server" Text="Guardar" OnClick="btnAceptar_Click" CssClass="btn btn-primary" />
+                                <asp:Button ID="btnEditar" runat="server" Text="Aceptar Cambios" OnClick="btnEditar_Click" CssClass="btn btn-primary" Visible="false" />
                             </div>
                         </div>
                     </div>

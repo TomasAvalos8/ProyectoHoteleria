@@ -93,6 +93,15 @@ namespace ProyectoHotel
             {
                 numeroHabitacion = row.Cells[1].Text;
                 capacidad = row.Cells[2].Text;
+                estado = row.Cells[3].Text;
+                txtNumero.Text = numeroHabitacion;
+                txtNumero.ReadOnly = true;
+                txtCapacidad.Text = capacidad;
+                txtEstado.Text = estado;
+                btnaceptar.Visible = false;
+                btnEditar.Visible = true;
+                string script = "abrirModal();";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
             }
             else if (e.CommandName == "Eliminar")
             {
@@ -101,22 +110,20 @@ namespace ProyectoHotel
             }
         }
 
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
 
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        protected void btnAgregarHabitacion_Click(object sender, EventArgs e)
+        {
+            txtNumero.Text = "";
+            txtCapacidad.Text = "";
+            txtEstado.Text = "";
+            btnaceptar.Visible = true;
+            btnEditar.Visible =false;
+            string script = "abrirModal();";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
+        }
     }
 }

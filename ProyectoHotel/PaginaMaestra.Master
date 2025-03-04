@@ -9,10 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="/estilos.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script src="scripts.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -20,11 +21,11 @@
         <header style="background-color: #003b95">
 
             <div class="dropdown" align="right">
-                <button class="btn dropdown-toggle text-white" style="background-color: #0047B8; margin-right:2vw" type="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</button>
+                <button class="btn dropdown-toggle text-white" style="background-color: #0047B8; margin-right: 2vw" type="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Configuraciones</a></li>
-                    <li><a class="dropdown-item " style="background-color:#e02012; color:white" href="Default.aspx?logout=true">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item " style="background-color: #e02012; color: white" href="Default.aspx?logout=true">Cerrar sesión</a></li>
                 </ul>
             </div>
 
@@ -34,9 +35,9 @@
             <div class="row">
                 <!-- Columna Izquierda - Sidebar -->
                 <nav class="col-md-3 col-lg-2 d-md-block sidebar" style="background-color: #003b95;">
-                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/logo%20hoteleria.jpg"  Style="height: 16vh; width: 16vh; object-fit: cover; aspect-ratio: 1/1; margin-left:25% " AlternateText="LOGO" OnClick="ImageButton1_Click"  />
-                    
-                    <a href="Default.aspx" style="margin-top:10vh">🏠 Inicio</a>
+                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/logo%20hoteleria.jpg" Style="height: 16vh; width: 16vh; object-fit: cover; aspect-ratio: 1/1; margin-left: 25%" AlternateText="LOGO" OnClick="ImageButton1_Click" />
+
+                    <a href="Default.aspx" style="margin-top: 10vh">🏠 Inicio</a>
                     <a href="Reservas.aspx">📅 Planificacion</a>
                     <a href="ListaReservas.aspx">📅 Lista de Reservas</a>
                     <a href="Mensajes.aspx">📩 Mensajes</a>

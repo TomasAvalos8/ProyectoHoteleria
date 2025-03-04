@@ -2,11 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="registro-tab" data-bs-toggle="tab" data-bs-target="#registro" type="button" role="tab">Registro</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="config-tab" data-bs-toggle="tab" data-bs-target="#configuracion" type="button" role="tab">Configuración</button>
+        </li>
+    </ul>
+
+
     <div class="tab-content mt-3">
-        <div class="tab-pane fade" id="registro" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="registro" role="tabpanel" aria-labelledby="home-tab">
 
 
-            <div class="row justify-content-center">
+
+            <div class="row justify-content-left" ">
 
                 <div class="col-4">
 
@@ -32,19 +44,20 @@
                     <script>
                         document.getElementById("togglePassword").addEventListener("click", function () {
                             const passwordInput = document.getElementById("<%= txtPass.ClientID %>");
-                        const icon = this.querySelector("i");
+                            const icon = this.querySelector("i");
 
 
-                        if (passwordInput.type === "password") {
-                            passwordInput.type = "text";
-                            icon.classList.remove("bi-eye");
-                            icon.classList.add("bi-eye-slash");
-                        } else {
-                            passwordInput.type = "password";
-                            icon.classList.remove("bi-eye-slash");
-                            icon.classList.add("bi-eye");
-                        }
-                    });
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                                icon.classList.remove("bi-eye");
+                                icon.classList.add("bi-eye-slash");
+                            } else {
+                                passwordInput.type = "password";
+                                icon.classList.remove("bi-eye-slash");
+                                icon.classList.add("bi-eye");
+                            }
+                        });
+
                     </script>
                     <div class="mb-3">
                         <label class="form-label">Tipo usuario</label>
@@ -54,12 +67,12 @@
                                 <asp:DropDownList ID="dropOpciones" runat="server" CssClass="form-control">
                                     <asp:ListItem Text="Seleccione un tipo de usuario" Value="0" />
                                     <asp:ListItem Text="Admin" Value="2" />
-                                    <asp:ListItem Text="Empleado" Value="1" />
+                                    <asp:ListItem Text="Recepcionista" Value="1" />
                                 </asp:DropDownList>
                             </div>
 
                             <asp:Button Text="Registrar" CssClass="btn btn-primary" ID="btnRegistrarse" OnClick="btnRegistrarse_Click" runat="server" />
-                            <a href="Pedidos.aspx">cancelar</a>
+                            <a href="Default.aspx">cancelar</a>
 
 
                         </div>
@@ -77,4 +90,3 @@
 
 
 </asp:Content>
-
