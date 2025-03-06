@@ -77,5 +77,24 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void eliminarConSP(int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_EliminarReserva");
+                datos.setearParametro("@Id", ID);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

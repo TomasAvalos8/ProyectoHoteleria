@@ -15,6 +15,7 @@ namespace ProyectoHotel
         private static DateTime? fechaEgreso = null;
         private static List<DateTime> fechasSeleccionadas = new List<DateTime>();
         private static List<DateTime> fechasReservadas = new List<DateTime>();
+        private static List<DateTime> fechasReservadasActual = new List<DateTime>();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,25 +31,68 @@ namespace ProyectoHotel
             }
             else
             {
+                fechasReservadasActual.Clear();
                 if (!IsPostBack)
                 {
+                    bool esEdicion = Request.QueryString["editar"] == "true";
                     string numeroHabitacion = Session["NumeroHabitacion"] as string;
                     string capacidad = Session["Capacidad"] as string;
                     string estado = Session["Estado"] as string;
+                    if (esEdicion)
+                    {
+                        string dni = Session["DNI"] as string;
+                        string nombre = Session["Nombre"] as string;
+                        string telefono = Session["Telefono"] as string;
+                        string fechaingreso = Session["FechaIngreso"] as string;
+                        string fechaegreso = Session["FechaEgreso"] as string;
+                        txtNroHabitacion.Text = numeroHabitacion;
+                        txtNroHabitacion.ReadOnly = true;
+                        txtCapacidad.Text = capacidad;
+                        txtCapacidad.ReadOnly = true;
+                        txtDNI.Text = dni;
+                        txtDNI.ReadOnly = true;
+                        txtNombre.Visible = true;
+                        txtNombre.ReadOnly = true;
+                        lblNombre.Visible = true;
+                        txtTelefono.Visible = true;
+                        txtTelefono.ReadOnly = true;
+                        lblTelefono.Visible = true;
+                        txtNombre.Text = nombre;
+                        txtTelefono.Text = telefono;
+                        txtFechaIngreso.Text = fechaingreso;
+                        txtFechaEgreso.Text = fechaegreso;
+                        fechaIngreso = Convert.ToDateTime(Session["FechaIngreso"]);
+                        fechaEgreso = Convert.ToDateTime(Session["FechaEgreso"]);
 
-                    txtNroHabitacion.Text = numeroHabitacion;
-                    txtNroHabitacion.ReadOnly = true;
-                    txtCapacidad.Text = capacidad;
-                    txtCapacidad.ReadOnly = true;
-                    
+                        // Agregar las fechas de la reserva a la lista
+                        fechasReservadasActual.Clear();
+                        for (DateTime date = fechaIngreso.Value; date <= fechaEgreso.Value; date = date.AddDays(1))
+                        {
+                            fechasReservadasActual.Add(date);
+                        }
+                    }
+                    else
+                    {
+
+
+                        txtNroHabitacion.Text = numeroHabitacion;
+                        txtNroHabitacion.ReadOnly = true;
+                        txtCapacidad.Text = capacidad;
+                        txtCapacidad.ReadOnly = true;
+                        txtDNI.Text = "";
+                        txtNombre.Text = "";
+                        txtTelefono.Text = "";
+                        txtFechaIngreso.Text = "";
+                        txtFechaEgreso.Text = "";
+                        txtNombre.Visible = false;
+                        lblNombre.Visible = false;
+                        txtTelefono.Visible = false;
+                        lblTelefono.Visible = false;
+                    }
                     CargarReservas();
                     fechasSeleccionadas.Clear();
                     fechaIngreso = null;
                     fechaEgreso = null;
-                    txtNombre.Visible = false;
-                    lblNombre.Visible = false;
-                    txtTelefono.Visible = false;
-                    lblTelefono.Visible = false;
 
                 }
             }
@@ -79,6 +123,8 @@ namespace ProyectoHotel
                 }
             }
         }
+
+
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             DateTime fechaSeleccionada = Calendar1.SelectedDate;
@@ -130,20 +176,21 @@ namespace ProyectoHotel
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
+            bool esFechaDeLaReservaActual = fechasReservadasActual.Contains(e.Day.Date);
             if (fechasSeleccionadas.Contains(e.Day.Date))
             {
                 e.Cell.BackColor = System.Drawing.Color.LightGreen;
                 e.Cell.ForeColor = System.Drawing.Color.White;
                 e.Cell.ToolTip = "Seleccionado";
             }
-            if (fechasReservadas.Contains(e.Day.Date))
+            else if (fechasReservadas.Contains(e.Day.Date) && !esFechaDeLaReservaActual)
             {
                 e.Cell.BackColor = System.Drawing.Color.DarkRed;
                 e.Cell.ForeColor = System.Drawing.Color.White;
                 e.Day.IsSelectable = false;
                 e.Cell.ToolTip = "Reservado";
             }
-            if (e.Day.Date < DateTime.Today)
+            else if (e.Day.Date < DateTime.Today)
             {
                 e.Day.IsSelectable = false;
                 e.Cell.BackColor = System.Drawing.Color.LightGray;

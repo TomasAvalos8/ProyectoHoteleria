@@ -33,7 +33,7 @@
 
 
 
-                <asp:GridView ID="dgvReservas" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true">
+                <asp:GridView ID="dgvReservas" runat="server" AutoGenerateColumns="false" CssClass="mi-tabla" Visible="true" OnRowCommand="dgvReservas_RowCommand">
                     <Columns>
 
                         <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -42,6 +42,19 @@
                         <asp:BoundField DataField="Numero_Habitacion" HeaderText="N° Habitación" />
                         <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha Ingreso" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundField DataField="FechaEgreso" HeaderText="Fecha Egreso" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+
+                                <asp:LinkButton ID="btnEditar" runat="server" CommandName="Editar"
+                                    CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-editar">✏️ Editar fechas
+                                </asp:LinkButton>
+
+
+                                <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar"
+                                    CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-eliminar">🗑️ Eliminar
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
 
@@ -116,6 +129,43 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="EliminarReserva" tabindex="-1" aria-labelledby="formularioModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-white text-dark">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="EliminarRes">Eliminar Reserva</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+
+                                    <label for="txtID" type="number" class="form-label">ID Reserva</label>
+                                    <asp:TextBox runat="server" ID="txtID" CssClass="form-control" />
+                                    <label for="txtDniH" type="number" class="form-label">DNI Huesped</label>
+                                    <asp:TextBox runat="server" ID="txtDniH" CssClass="form-control" />
+                                    <label for="txtNombreH" type="number" class="form-label">Nombre Huesped</label>
+                                    <asp:TextBox runat="server" ID="txtNombreH" CssClass="form-control" />
+                                    <label for="txtFechaI" type="number" class="form-label">Fecha Ingreso</label>
+                                    <asp:TextBox runat="server" ID="txtFechaI" CssClass="form-control" />
+                                    <label for="txtFechaE" type="number" class="form-label">Fecha Egreso</label>
+                                    <asp:TextBox runat="server" ID="txtFechaE" CssClass="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-3 text-center">
+                                        <label class="form-label">¿Está seguro que desea eliminar la reserva seleccionada?</label>
+                                    </div>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <asp:Button ID="btnEReserva" runat="server" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEReserva_Click" />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

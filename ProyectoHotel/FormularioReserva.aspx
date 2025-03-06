@@ -9,7 +9,7 @@
             <div style="box-sizing: border-box; margin: 0; max-width: 1200px; margin: 0 auto; padding: 0;">
                 <div class="row">
                     <!-- Columna Izquierda - Inputs -->
-                    <div class="col-md-6" style="margin:20px 0">
+                    <div class="col-md-6" style="margin:20px 0 0 0">
                         <div class="card p-4" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                             <h4  style="color: #003399; font-weight: bold; margin-bottom: 15px;margin-top:0;">Datos de la Reserva</h4>
                             <div class="mb-1">
@@ -32,7 +32,7 @@
                                 <label for="txtNombre" runat="server" class="form-label" ID="lblNombre">Nombre Huésped</label>
                                 <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
                             </div>
-                            <div class="mb-1" >
+                            <div  >
                                 <label for="txtTelefono" runat="server" class="form-label" ID="lblTelefono">Telefono Huésped</label>
                                 <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" />
                             </div>
@@ -67,7 +67,7 @@
                     <!-- Botones -->
 
                             <div class="d-flex mt-4 justify-content-between">
-                                <button type="button" class="btn btn-danger me-2" style="border-radius: 5px; padding: 8px 20px;">Cancelar</button>
+                                <a href="Reservas.aspx" type="button" class="btn btn-danger me-2" style="border-radius: 5px; padding: 8px 20px;">Cancelar</a>
                                 <asp:Button ID="btnGuardarReserva" runat="server" Text="Confirmar Reserva" OnClick="btnGuardarReserva_Click" CssClass="btn btn-success" Style="border-radius: 5px; padding: 8px 20px;" />
                             </div>
                         </div>

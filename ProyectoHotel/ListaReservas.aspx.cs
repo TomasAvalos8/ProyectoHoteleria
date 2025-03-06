@@ -14,6 +14,11 @@ namespace ProyectoHotel
         private static DateTime? fechaIngreso = null;
         private static DateTime? fechaEgreso = null;
         private static List<DateTime> fechasReservadas = new List<DateTime>();
+        private string ID;
+        private string DNI;
+        private string Nombre;
+        private string FechaI;
+        private string FechaE;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -111,7 +116,7 @@ namespace ProyectoHotel
             ReservaNegocio negocio = new ReservaNegocio();
             List<Reserva> lista = negocio.Listar();
 
-            
+
             string filtroFecha = txtFiltroFecha.Text.Trim();
             string filtroNroHabitacion = txtFiltroNroHabitacion.Text.Trim();
             string filtroDNI = txtFiltroDNI.Text.Trim();
@@ -119,7 +124,7 @@ namespace ProyectoHotel
             //Filtro fecha
             if (!string.IsNullOrEmpty(filtroFecha) && DateTime.TryParse(filtroFecha, out DateTime fechaIngresada))
             {
-                lista = lista.Where(r => r.FechaIngreso.Date <= fechaIngresada.Date&& r.FechaEgreso.Date >= fechaIngresada.Date).ToList();
+                lista = lista.Where(r => r.FechaIngreso.Date <= fechaIngresada.Date && r.FechaEgreso.Date >= fechaIngresada.Date).ToList();
             }
 
             //filtro nro habitacion 
@@ -133,7 +138,7 @@ namespace ProyectoHotel
                 lista = lista.Where(r => r.DNI_Huesped == DNI).ToList();
             }
 
-            
+
             dgvReservas.DataSource = lista;
             dgvReservas.DataBind();
         }
@@ -145,6 +150,80 @@ namespace ProyectoHotel
             txtFiltroNroHabitacion.Text = "";
             txtFiltroDNI.Text = "";
             CargarReservas(); // Recargar todas las reservas sin filtro
+        }
+
+        protected void dgvReservas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = dgvReservas.Rows[index];
+            if (e.CommandName == "Editar")
+            {
+                string ID = row.Cells[0].Text;
+                CargarReservaSession(ID);
+                Response.Redirect("FormularioReserva.aspx?editar=true");
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                ID = row.Cells[0].Text;
+                txtID.Text = ID;
+                txtID.ReadOnly = true;
+                DNI = row.Cells[1].Text;
+                txtDniH.Text = DNI;
+                txtDniH.ReadOnly = true;
+                Nombre = row.Cells[2].Text;
+                txtNombreH.Text = Nombre;
+                txtNombreH.ReadOnly = true;
+                FechaI = row.Cells[3].Text;
+                txtFechaI.Text = FechaI;
+                txtFechaI.ReadOnly = true;
+                FechaE = row.Cells[4].Text;
+                txtFechaE.Text = FechaE;
+                txtFechaE.ReadOnly = true;
+
+                string script = "abrirModal('EliminarReserva');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
+            }
+        }
+
+        protected void CargarReservaSession(string ID)
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            List<Reserva> lista = negocio.Listar();
+
+            foreach (var reserva in lista)
+            {
+                if (ID == reserva.Id.ToString())
+                {
+                    Session["IdReserva"] = ID;
+                    Session["NumeroHabitacion"] = reserva.Numero_Habitacion.ToString();
+                    Session["Capacidad"] = reserva.Capacidad.ToString();
+                    //Session[""] = reserva.precio.ToString();
+                    Session["DNI"] = reserva.DNI_Huesped.ToString();
+                    Session["Nombre"] = reserva.Nombre_Huesped.ToString();
+                    Session["Telefono"] = reserva.Telefono.ToString();
+                    Session["FechaIngreso"] = reserva.FechaIngreso.ToString("dd/MM/yyyy");
+                    Session["FechaEgreso"] = reserva.FechaEgreso.ToString("dd/MM/yyyy");
+                    break;
+                }
+            }
+        }
+        protected void btnEReserva_Click(object sender, EventArgs e)
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            try
+            {
+                int Id = int.Parse(txtID.Text);
+
+                negocio.eliminarConSP(Id);
+
+
+                Response.Redirect("ListaReservas.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
