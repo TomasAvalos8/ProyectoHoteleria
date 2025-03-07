@@ -58,8 +58,23 @@
                     </Columns>
                 </asp:GridView>
 
-                <div>
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px"
+                <div class="row mb-2">
+                    <div class="col-md-3" style="padding-right: 0;">
+                        <asp:DropDownList
+                            ID="ddlHabitaciones"
+                            runat="server"
+                            CssClass="form-control form-control-sm"
+                            AutoPostBack="true"
+                            OnSelectedIndexChanged="ddlHabitaciones_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </div>
+                    <label class="col-md-9 col-form-label" for="ddlHabitaciones">Seleccione un número de habitación para ver el calendario con sus reservas</label>
+                </div>
+
+
+                <div visible="false">
+
+                    <asp:Calendar Visible="false" ID="Calendar1" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px"
                         DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt"
                         ForeColor="#003399"
                         OnSelectionChanged="Calendar1_SelectionChanged" OnDayRender="Calendar1_DayRender" CellPadding="1" Height="250px" Width="100%">
@@ -72,8 +87,7 @@
                         <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
                         <WeekendDayStyle BackColor="#CCCCFF" />
                     </asp:Calendar>
-
-                    <button type="button" class=" m-2 btn-editar" data-bs-toggle="modal" data-bs-target="#modalFechaSeleccionada">Detalles de la Reserva </button>
+                    <asp:Button ID="btnDetalles" runat="server" Text="Detalles de la Reserva" OnClick="btnDetalles_Click" Visible="false" class=" m-2 btn-editar" />
                 </div>
 
                 <!-- Modal para mostrar información de la fecha seleccionada -->

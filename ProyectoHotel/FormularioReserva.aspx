@@ -69,6 +69,7 @@
                             <div class="d-flex mt-4 justify-content-between">
                                 <a href="Reservas.aspx" type="button" class="btn btn-danger me-2" style="border-radius: 5px; padding: 8px 20px;">Cancelar</a>
                                 <asp:Button ID="btnGuardarReserva" runat="server" Text="Confirmar Reserva" OnClick="btnGuardarReserva_Click" CssClass="btn btn-success" Style="border-radius: 5px; padding: 8px 20px;" />
+                                <asp:Button ID="btnEditarReserva" runat="server" Text="Editar Reserva" OnClick="btnEditarReserva_Click" CssClass="btn btn-success" Style="border-radius: 5px; padding: 8px 20px;" Visible="false" />
                             </div>
                         </div>
                     </div>

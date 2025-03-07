@@ -16,7 +16,7 @@ namespace Dominio
 
             try
             {
-                datos.setearConsulta("SELECT Numero,Capacidad,Estado,Activo FROM Habitacion");
+                datos.setearConsulta("SELECT Numero,Capacidad,Estado,Activo,PrecioBase FROM Habitacion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -25,6 +25,7 @@ namespace Dominio
                     {
                         Numero = (int)datos.Lector["Numero"],
                         Capacidad = (int)datos.Lector["Capacidad"],
+                        PrecioBase = (decimal)datos.Lector["PrecioBase"],
                         Estado = datos.Lector["Estado"].ToString(),
                         Activo = (bool)datos.Lector["Activo"],
 
@@ -54,6 +55,7 @@ namespace Dominio
                 datos.setearProcedimiento("sp_AgregarHabitacion");
                 datos.setearParametro("@Numero", nuevo.Numero);
                 datos.setearParametro("@Capacidad", nuevo.Capacidad);
+                datos.setearParametro("@PrecioBase", nuevo.PrecioBase);
                 datos.setearParametro("@Estado", nuevo.Estado);
                 datos.setearParametro("@Activo", nuevo.Activo);
 
@@ -77,6 +79,7 @@ namespace Dominio
                 datos.setearProcedimiento("sp_ModificarHabitacion");
                 datos.setearParametro("@Numero", modificada.Numero);
                 datos.setearParametro("@Capacidad", modificada.Capacidad);
+                datos.setearParametro("@PrecioBase", modificada.PrecioBase);
                 datos.setearParametro("@Estado", modificada.Estado);
                 datos.setearParametro("@Activo", modificada.Activo);
 

@@ -16,6 +16,7 @@ namespace ProyectoHotel
         private string numeroHabitacion;
         private string capacidad;
         private string estado;
+        private string precio;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,7 +54,8 @@ namespace ProyectoHotel
             {
                 nuevo.Numero = int.Parse(txtNumero.Text);
                 nuevo.Capacidad = int.Parse(txtCapacidad.Text);
-                nuevo.Estado = txtEstado.Text;
+                nuevo.Estado = ddlEstado.SelectedValue;
+                nuevo.PrecioBase = decimal.Parse(txtPrecioBase.Text);
                 nuevo.Activo = true;
                 negocio.agregarConSP(nuevo);
 
@@ -75,7 +77,8 @@ namespace ProyectoHotel
             {
                 modificada.Numero = int.Parse(txtNumero.Text);
                 modificada.Capacidad = int.Parse(txtCapacidad.Text);
-                modificada.Estado = txtEstado.Text;
+                modificada.PrecioBase = decimal.Parse(txtPrecioBase.Text);
+                modificada.Estado = ddlEstado.SelectedValue;
                 modificada.Activo = true;
                 negocio.modificarConSP(modificada);
 
@@ -121,21 +124,25 @@ namespace ProyectoHotel
 
             if (e.CommandName == "Agregar")
             {
+                
                 Session["NumeroHabitacion"] = row.Cells[1].Text;
                 Session["Capacidad"] = row.Cells[2].Text;
                 Session["Estado"] = row.Cells[3].Text;
+                Session["Precio"] = row.Cells[4].Text;
                 Response.Redirect("FormularioReserva.aspx");
 
             }
-            else if (e.CommandName == "Editar")
+             if (e.CommandName == "Editar")
             {
                 numeroHabitacion = row.Cells[1].Text;
                 capacidad = row.Cells[2].Text;
                 estado = row.Cells[3].Text;
+                precio = row.Cells[4].Text;
                 txtNumero.Text = numeroHabitacion;
                 txtNumero.ReadOnly = true;
                 txtCapacidad.Text = capacidad;
-                txtEstado.Text = estado;
+                ddlEstado.SelectedValue = estado;
+                txtPrecioBase.Text = precio;
                 btnaceptar.Visible = false;
                 btnEditar.Visible = true;
                 tituloAgregar.Style["display"] = "none";
@@ -143,7 +150,7 @@ namespace ProyectoHotel
                 string script = "abrirModal('formularioModalAgregarHabitacion');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
             }
-            else if (e.CommandName == "Eliminar")
+             if (e.CommandName == "Eliminar")
             {
                 numeroHabitacion = row.Cells[1].Text;
                 txtNro.Text = numeroHabitacion;
@@ -157,9 +164,10 @@ namespace ProyectoHotel
 
         protected void btnAgregarHabitacion_Click(object sender, EventArgs e)
         {
+            txtNumero.ReadOnly = false;
             txtNumero.Text = "";
             txtCapacidad.Text = "";
-            txtEstado.Text = "";
+            ddlEstado.SelectedValue = "";
             btnaceptar.Visible = true;
             btnEditar.Visible = false;
             tituloAgregar.Style["display"] = "block";

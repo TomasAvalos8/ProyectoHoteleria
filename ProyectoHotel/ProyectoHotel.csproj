@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Configuracion.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="estilos.css" />
     <Content Include="FormularioRegistro.aspx" />
     <Content Include="FormularioReserva.aspx" />
@@ -93,6 +94,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioRegistro.aspx.cs">
       <DependentUpon>FormularioRegistro.aspx</DependentUpon>

@@ -30,6 +30,7 @@
                     <asp:BoundField DataField="Numero" HeaderText="Habitación" />
                     <asp:BoundField DataField="Capacidad" HeaderText="Capacidad" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                    <asp:BoundField DataField="PrecioBase" HeaderText="Precio Base" />
                     <asp:TemplateField>
                         <ItemTemplate>
 
@@ -55,7 +56,7 @@
 
                         <div class="modal-header">
                             <h5 class="modal-title" id="tituloAgregar" runat="server">Agregar Habitacion</h5>
-                            <h5 class="modal-title" id="tituloEditar"  runat="server">Editar Habitacion</h5>
+                            <h5 class="modal-title" id="tituloEditar" runat="server">Editar Habitacion</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -68,8 +69,16 @@
                                 <asp:TextBox runat="server" ID="txtCapacidad" CssClass="form-control" />
                             </div>
                             <div class="mb-3">
+                                <label for="txtPrecioBase" class="form-label">Precio base de la habitacion</label>
+                                <asp:TextBox runat="server" ID="txtPrecioBase" CssClass="form-control" />
+                            </div>
+                            <div class="mb-1">
                                 <label for="txtEstado" class="form-label">Estado de la habitacion</label>
-                                <asp:TextBox runat="server" ID="txtEstado" CssClass="form-control" />
+                                <asp:DropDownList ID="ddlEstado" runat="server">
+                                    <asp:ListItem Text="Disponible" Value="Disponible"></asp:ListItem>
+                                    <asp:ListItem Text="Ocupada" Value="Ocupada"></asp:ListItem>
+                                    <asp:ListItem Text="Mantenimiento" Value="Mantenimiento"></asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

@@ -37,6 +37,7 @@ namespace ProyectoHotel
                 if (!IsPostBack)
                 {
                     CargarReservas();
+                    CargarHabitaciones();
                 }
             }
         }
@@ -47,20 +48,37 @@ namespace ProyectoHotel
             dgvReservas.DataSource = lista;
             dgvReservas.DataBind();
 
-            fechasReservadas.Clear();
+        }
 
-            // Agregar las fechas reservadas al calendario
+        private void CargarHabitaciones()
+        {
+            HabitacionNegocio negocio = new HabitacionNegocio();
+            List<Habitacion> listaHabitaciones = negocio.Listar();
+
+            ddlHabitaciones.DataSource = listaHabitaciones;
+            ddlHabitaciones.DataBind();
+
+            ddlHabitaciones.Items.Insert(0, new ListItem("Seleccione una habitación", "0"));
+        }
+        private void CargarReservasPorHabitacion(int NroHabitacion)
+        {
+            ReservaNegocio negocio = new ReservaNegocio();
+            List<Reserva> lista = negocio.Listar().Where(r => r.Numero_Habitacion == NroHabitacion).ToList();
+
+            dgvReservas.DataSource = lista;
+            dgvReservas.DataBind();
+
+            fechasReservadas.Clear();
             foreach (var reserva in lista)
             {
-                DateTime fechaIngreso = reserva.FechaIngreso;
-                DateTime fechaEgreso = reserva.FechaEgreso;
-
-                for (DateTime fecha = fechaIngreso; fecha <= fechaEgreso; fecha = fecha.AddDays(1))
+                for (DateTime fecha = reserva.FechaIngreso; fecha <= reserva.FechaEgreso; fecha = fecha.AddDays(1))
                 {
                     fechasReservadas.Add(fecha);
                 }
             }
         }
+
+
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             DateTime fechaSeleccionada = Calendar1.SelectedDate;
@@ -92,6 +110,12 @@ namespace ProyectoHotel
         }
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
+            if (e.Day.Date < DateTime.Today)
+            {
+                e.Cell.BackColor = System.Drawing.Color.LightGray;
+                e.Cell.ForeColor = System.Drawing.Color.DarkGray;
+                e.Cell.ToolTip = "Fecha no disponible";
+            }
             if (fechasReservadas.Contains(e.Day.Date))
             {
                 e.Cell.BackColor = System.Drawing.Color.DarkRed;
@@ -102,17 +126,13 @@ namespace ProyectoHotel
             {
                 e.Day.IsSelectable = false;
             }
-            if (e.Day.Date < DateTime.Today)
-            {
-                e.Day.IsSelectable = false;
-                e.Cell.BackColor = System.Drawing.Color.LightGray;
-                e.Cell.ForeColor = System.Drawing.Color.DarkGray;
-                e.Cell.ToolTip = "Fecha no disponible";
-            }
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            Calendar1.Visible = false;
+            btnDetalles.Visible = false;
+            ddlHabitaciones.SelectedIndex = 0;
             ReservaNegocio negocio = new ReservaNegocio();
             List<Reserva> lista = negocio.Listar();
 
@@ -224,6 +244,28 @@ namespace ProyectoHotel
             {
                 throw ex;
             }
+        }
+
+        protected void ddlHabitaciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calendar1.SelectedDate = DateTime.MinValue;
+            if (ddlHabitaciones.SelectedIndex > 0)
+            {
+                int numero = int.Parse(ddlHabitaciones.SelectedValue);
+                CargarReservasPorHabitacion(numero);
+                Calendar1.Visible = true;
+                btnDetalles.Visible = true;
+                txtFiltroDNI.Text = "";
+                txtFiltroFecha.Text = "";
+                txtFiltroNroHabitacion.Text = "";
+            }
+        }
+
+
+        protected void btnDetalles_Click(object sender, EventArgs e)
+        {
+            string script = "abrirModal('modalFechaSeleccionada');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
         }
     }
 }

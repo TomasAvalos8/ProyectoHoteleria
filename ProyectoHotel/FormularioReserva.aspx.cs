@@ -37,6 +37,7 @@ namespace ProyectoHotel
                     bool esEdicion = Request.QueryString["editar"] == "true";
                     string numeroHabitacion = Session["NumeroHabitacion"] as string;
                     string capacidad = Session["Capacidad"] as string;
+                    string precio = Session["Precio"] as string;
                     string estado = Session["Estado"] as string;
                     if (esEdicion)
                     {
@@ -49,6 +50,8 @@ namespace ProyectoHotel
                         txtNroHabitacion.ReadOnly = true;
                         txtCapacidad.Text = capacidad;
                         txtCapacidad.ReadOnly = true;
+                        txtPrecio.Text = precio;
+                        txtPrecio.ReadOnly = true;
                         txtDNI.Text = dni;
                         txtDNI.ReadOnly = true;
                         txtNombre.Visible = true;
@@ -61,6 +64,8 @@ namespace ProyectoHotel
                         txtTelefono.Text = telefono;
                         txtFechaIngreso.Text = fechaingreso;
                         txtFechaEgreso.Text = fechaegreso;
+                        btnEditarReserva.Visible = true;
+                        btnGuardarReserva.Visible = false;
                         fechaIngreso = Convert.ToDateTime(Session["FechaIngreso"]);
                         fechaEgreso = Convert.ToDateTime(Session["FechaEgreso"]);
 
@@ -79,6 +84,8 @@ namespace ProyectoHotel
                         txtNroHabitacion.ReadOnly = true;
                         txtCapacidad.Text = capacidad;
                         txtCapacidad.ReadOnly = true;
+                        txtPrecio.Text = precio;
+                        txtPrecio.ReadOnly = true;
                         txtDNI.Text = "";
                         txtNombre.Text = "";
                         txtTelefono.Text = "";
@@ -213,6 +220,15 @@ namespace ProyectoHotel
                 nuevo.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
 
 
+                // Verificar si alguna fecha seleccionada ya está reservada
+                foreach (DateTime fecha in fechasSeleccionadas)
+                {
+                    if (fechasReservadas.Contains(fecha))
+                    {
+                        Session["ErrorMensaje"] = "Alguna de las fechas seleccionadas ya está reservada.";
+                        Response.Redirect("Error.aspx");
+                    }
+                }
                 if (!validarDNI(nuevo.DNI_Huesped))
                 {
                     AgregarHuesped(nuevo.DNI_Huesped, nombre, telefono);
@@ -329,6 +345,33 @@ namespace ProyectoHotel
         protected void txtNroHabitacion_TextChanged(object sender, EventArgs e)
         {
             CargarReservas();
+        }
+
+        protected void btnEditarReserva_Click(object sender, EventArgs e)
+        {
+            Reserva modificada = new Reserva();
+            ReservaNegocio negocio = new ReservaNegocio();
+            try
+            {
+                modificada.Id = Convert.ToInt32(Session["IdReserva"]);
+                modificada.DNI_Huesped = int.Parse(txtDNI.Text);
+                modificada.Nombre_Huesped = txtNombre.Text;
+                modificada.Telefono = txtTelefono.Text;
+                modificada.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
+                modificada.Capacidad = int.Parse(txtCapacidad.Text);
+                modificada.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
+                modificada.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
+                modificada.Activo = true;
+                negocio.editarConSP(modificada);
+
+
+                Response.Redirect("ListaReservas.aspx", false);
+            }
+            catch (Exception)
+            {
+                string script = "alert('Por favor, completa el campo.');";
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+            }
         }
     }
 }
