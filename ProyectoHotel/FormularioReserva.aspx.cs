@@ -34,6 +34,7 @@ namespace ProyectoHotel
             {
                 if (!IsPostBack)
                 {
+                    lblError.Visible = false;
                     bool esEdicion = Request.QueryString["editar"] == "true";
                     string numeroHabitacion = Session["NumeroHabitacion"] as string;
                     string capacidad = Session["Capacidad"] as string;
@@ -213,6 +214,16 @@ namespace ProyectoHotel
             ReservaNegocio negocio = new ReservaNegocio();
             try
             {
+                if (string.IsNullOrEmpty(txtDNI.Text) ||
+     string.IsNullOrEmpty(txtNombre.Text) ||
+        string.IsNullOrEmpty(txtTelefono.Text) ||
+            string.IsNullOrEmpty(txtFechaIngreso.Text) ||
+                string.IsNullOrEmpty(txtFechaEgreso.Text))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    return;
+                }
 
                 nuevo.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
                 nuevo.DNI_Huesped = int.Parse(txtDNI.Text);
@@ -237,7 +248,7 @@ namespace ProyectoHotel
                     return;
                 }
 
-                int totalDias = (nuevo.FechaEgreso - nuevo.FechaIngreso).Days +1;
+                int totalDias = (nuevo.FechaEgreso - nuevo.FechaIngreso).Days + 1;
                 if (totalDias <= 0)
                 {
                     Response.Write("<script>alert('Error: La fecha de egreso debe ser posterior a la fecha de ingreso.');</script>");
@@ -260,7 +271,8 @@ namespace ProyectoHotel
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -271,16 +283,19 @@ namespace ProyectoHotel
 
             try
             {
+
                 accesoDatos.setearProcedimiento("InsertarReserva");
                 accesoDatos.setearParametro("@DNI_Huesped", dniHuesped);
                 accesoDatos.setearParametro("@Numero_Habitacion", numeroHabitacion);
                 accesoDatos.setearParametro("@FechaIngreso", fechaIngreso);
                 accesoDatos.setearParametro("@FechaEgreso", fechaEgreso);
                 accesoDatos.ejecutarAccion();
+
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al agregar la reserva: " + ex.Message);
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -302,7 +317,8 @@ namespace ProyectoHotel
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al agregar el huesped: " + ex.Message);
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -352,7 +368,7 @@ namespace ProyectoHotel
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
+                Session.Add("ErrorMensaje", ex.Message);
                 Response.Redirect("Error.aspx");
                 throw ex;
             }
@@ -374,6 +390,15 @@ namespace ProyectoHotel
             ReservaNegocio negocio = new ReservaNegocio();
             try
             {
+                if (
+                            string.IsNullOrEmpty(txtFechaIngreso.Text) ||
+                                string.IsNullOrEmpty(txtFechaEgreso.Text))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    return;
+                }
+
                 modificada.Id = Convert.ToInt32(Session["IdReserva"]);
                 modificada.DNI_Huesped = int.Parse(txtDNI.Text);
                 modificada.Nombre_Huesped = txtNombre.Text;
@@ -389,13 +414,13 @@ namespace ProyectoHotel
 
                 Response.Redirect("ListaReservas.aspx", false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                string script = "alert('Por favor, completa el campo.');";
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
         }
 
-      
+
     }
 }

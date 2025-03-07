@@ -37,7 +37,7 @@ namespace ProyectoHotel
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
+                Session.Add("ErrorMensaje", ex.Message);
                 Response.Redirect("Error.aspx");
             }
         }

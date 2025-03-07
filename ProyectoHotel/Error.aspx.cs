@@ -11,6 +11,7 @@ namespace ProyectoHotel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtError.Text = "";
             if (Session["ErrorMensaje"] != null)
             {
                 string errorMensaje = Session["ErrorMensaje"].ToString();
@@ -20,7 +21,7 @@ namespace ProyectoHotel
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Reservas.aspx");
         }
     }
 }

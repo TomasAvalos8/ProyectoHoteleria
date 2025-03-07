@@ -16,7 +16,7 @@ namespace Negocio
                 datos.setearProcedimiento("insertarNuevo");
                 datos.setearParametro("@user", nuevo.Usuario);
                 datos.setearParametro("@pass", nuevo.Pass);
-                datos.setearParametro("@Tipo", nuevo.Tipo);
+                datos.setearParametro("@Administrador", nuevo.Tipo);
                 return datos.ejecutarAccionScalar();
 
             }

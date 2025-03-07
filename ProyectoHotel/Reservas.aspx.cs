@@ -33,6 +33,7 @@ namespace ProyectoHotel
             {
                 if (!IsPostBack)
                 {
+                    lblError.Visible = false;
                     CargarHabitaciones();
                 }
             }
@@ -45,50 +46,86 @@ namespace ProyectoHotel
             gvHabitaciones.DataSource = lista;
             gvHabitaciones.DataBind();
         }
+
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-
             Habitacion nuevo = new Habitacion();
             HabitacionNegocio negocio = new HabitacionNegocio();
+
             try
             {
-                nuevo.Numero = int.Parse(txtNumero.Text);
-                nuevo.Capacidad = int.Parse(txtCapacidad.Text);
-                nuevo.Estado = ddlEstado.SelectedValue;
-                nuevo.PrecioBase = decimal.Parse(txtPrecioBase.Text);
-                nuevo.Activo = true;
-                negocio.agregarConSP(nuevo);
+                if (string.IsNullOrEmpty(txtNumero.Text) ||
+                    string.IsNullOrEmpty(txtCapacidad.Text) ||
+                     string.IsNullOrEmpty(txtPrecioBase.Text))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    string script = "abrirModal('formularioModalAgregarHabitacion');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
+                }
+                else
+                {
+                    nuevo.Numero = int.Parse(txtNumero.Text);
+                    nuevo.Capacidad = int.Parse(txtCapacidad.Text);
+                    nuevo.Estado = ddlEstado.SelectedValue;
+                    nuevo.PrecioBase = decimal.Parse(txtPrecioBase.Text);
+                    nuevo.Activo = true;
 
+                    negocio.agregarConSP(nuevo);
 
-                Response.Redirect("Reservas.aspx", false);
+                    Response.Redirect("Reservas.aspx", false);
+                }
             }
-            catch (Exception)
+            catch (SqlException ex) 
             {
-                string script = "alert('Por favor, completa el campo.');";
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
+            catch (FormatException ex)
+            {
 
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
+            }
         }
+
+
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             Habitacion modificada = new Habitacion();
             HabitacionNegocio negocio = new HabitacionNegocio();
             try
             {
-                modificada.Numero = int.Parse(txtNumero.Text);
-                modificada.Capacidad = int.Parse(txtCapacidad.Text);
-                modificada.PrecioBase = decimal.Parse(txtPrecioBase.Text);
-                modificada.Estado = ddlEstado.SelectedValue;
-                modificada.Activo = true;
-                negocio.modificarConSP(modificada);
+                if (string.IsNullOrEmpty(txtCapacidad.Text) ||
+                         string.IsNullOrEmpty(txtPrecioBase.Text))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    string script = "abrirModal('formularioModalAgregarHabitacion');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MostrarModal", script, true);
+                }
+                else
+                {
+                    modificada.Numero = int.Parse(txtNumero.Text);
+                    modificada.Capacidad = int.Parse(txtCapacidad.Text);
+                    modificada.PrecioBase = decimal.Parse(txtPrecioBase.Text);
+                    modificada.Estado = ddlEstado.SelectedValue;
+                    modificada.Activo = true;
+                    negocio.modificarConSP(modificada);
 
-
-                Response.Redirect("Reservas.aspx", false);
+                    Response.Redirect("Reservas.aspx", false);
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                string script = "alert('Por favor, completa el campo.');";
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                Session.Add("ErrorMensaje", ex.Message);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -108,7 +145,7 @@ namespace ProyectoHotel
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
+                Session.Add("ErrorMensaje", ex.Message);
                 Response.Redirect("Error.aspx");
             }
         }

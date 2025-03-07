@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist" sytle="with:100%">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" sytle="with:100%">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="registro-tab" data-bs-toggle="tab" data-bs-target="#registro" type="button" role="tab">Registro</button>
         </li>
@@ -18,7 +18,7 @@
 
 
 
-            <div class="row justify-content-center" style="width:100%">
+            <div class="d-flex justify-content-center align-items-center" style="height: 70vh">
 
                 <div class="col-4">
 
@@ -63,7 +63,7 @@
                         <div class="col-6">
 
                             <asp:Button Text="Registrar" CssClass="btn btn-primary" ID="btnRegistrarse" OnClick="btnRegistrarse_Click" runat="server" />
-                            <a href="Default.aspx">cancelar</a>
+                            <a href="Reservas.aspx">Cancelar</a>
 
 
                         </div>

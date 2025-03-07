@@ -82,6 +82,11 @@
                                     <asp:ListItem Text="Mantenimiento" Value="Mantenimiento"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
+                            <div class="mb-1">
+
+                                <asp:Label ID="lblError" runat="server" Text="Label" Style="color: red"></asp:Label>
+
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                 <asp:Button ID="btnaceptar" runat="server" Text="Guardar" OnClick="btnAceptar_Click" CssClass="btn btn-primary" />

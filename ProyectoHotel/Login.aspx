@@ -36,7 +36,7 @@
 
                 <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" />
 
-                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-primary" OnClick="btnRegistrar_Click" />
+                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-secondary" OnClick="btnRegistrar_Click" />
 
             </div>
             <div class="col-2">
