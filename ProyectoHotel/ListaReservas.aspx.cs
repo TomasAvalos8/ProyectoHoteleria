@@ -98,7 +98,7 @@ namespace ProyectoHotel
                 {
                     txtNroHabitacion.Text = reserva.Numero_Habitacion.ToString();
                     txtCapacidad.Text = reserva.Capacidad.ToString();
-                    //txtPrecio.Text = reserva..ToString();
+                    txtPrecio.Text = reserva.TotalReserva.ToString();
                     txtDNI.Text = reserva.DNI_Huesped.ToString();
                     txtNombre.Text = reserva.Nombre_Huesped.ToString();
                     txtTelefono.Text = reserva.Telefono.ToString();
@@ -243,7 +243,9 @@ namespace ProyectoHotel
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 

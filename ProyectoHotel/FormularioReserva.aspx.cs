@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -31,7 +32,6 @@ namespace ProyectoHotel
             }
             else
             {
-                fechasReservadasActual.Clear();
                 if (!IsPostBack)
                 {
                     bool esEdicion = Request.QueryString["editar"] == "true";
@@ -213,6 +213,7 @@ namespace ProyectoHotel
             ReservaNegocio negocio = new ReservaNegocio();
             try
             {
+
                 nuevo.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
                 nuevo.DNI_Huesped = int.Parse(txtDNI.Text);
                 string nombre = txtNombre.Text;
@@ -348,10 +349,12 @@ namespace ProyectoHotel
                 txtTelefono.Visible = true;
                 return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
+                throw ex;
             }
             finally
             {

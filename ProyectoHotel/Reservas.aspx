@@ -59,10 +59,12 @@
                             <h5 class="modal-title" id="tituloEditar" runat="server">Editar Habitacion</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="txtNumero" type="number" class="form-label">Numero habitacion</label>
                                 <asp:TextBox runat="server" ID="txtNumero" CssClass="form-control" />
+
                             </div>
                             <div class="mb-3">
                                 <label for="txtCapacidad" class="form-label">Capacidad de la habitacion</label>
@@ -89,6 +91,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="modal fade" id="EliminarHabitacion" tabindex="-1" aria-labelledby="formularioModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

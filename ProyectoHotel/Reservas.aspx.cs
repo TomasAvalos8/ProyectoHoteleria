@@ -107,7 +107,9 @@ namespace ProyectoHotel
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -128,7 +130,7 @@ namespace ProyectoHotel
                 Session["NumeroHabitacion"] = row.Cells[1].Text;
                 Session["Capacidad"] = row.Cells[2].Text;
                 Session["Estado"] = row.Cells[3].Text;
-                Session["Precio"] = row.Cells[4].Text;
+                Session["TotalReserva"] = row.Cells[4].Text;
                 Response.Redirect("FormularioReserva.aspx");
 
             }
