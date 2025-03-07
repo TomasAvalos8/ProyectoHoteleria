@@ -15,7 +15,7 @@ namespace ProyectoHotel
         }
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Reservas.aspx");
         }
     }
 }

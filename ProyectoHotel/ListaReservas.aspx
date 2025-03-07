@@ -42,6 +42,7 @@
                         <asp:BoundField DataField="Numero_Habitacion" HeaderText="N° Habitación" />
                         <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha Ingreso" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundField DataField="FechaEgreso" HeaderText="Fecha Egreso" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:BoundField DataField="TotalReserva" HeaderText="Total de Reserva" />
                         <asp:TemplateField>
                             <ItemTemplate>
 

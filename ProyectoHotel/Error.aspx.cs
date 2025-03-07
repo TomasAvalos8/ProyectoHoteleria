@@ -7,16 +7,20 @@ using System.Web.UI.WebControls;
 
 namespace ProyectoHotel
 {
-	public partial class Error : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-
-		}
+    public partial class Error : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["ErrorMensaje"] != null)
+            {
+                string errorMensaje = Session["ErrorMensaje"].ToString();
+                txtError.Text = "Error: " + errorMensaje;
+            }
+        }
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-			Response.Redirect("Default.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }

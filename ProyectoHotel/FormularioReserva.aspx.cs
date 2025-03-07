@@ -37,7 +37,7 @@ namespace ProyectoHotel
                     bool esEdicion = Request.QueryString["editar"] == "true";
                     string numeroHabitacion = Session["NumeroHabitacion"] as string;
                     string capacidad = Session["Capacidad"] as string;
-                    string precio = Session["Precio"] as string;
+                    string precio = Session["TotalReserva"] as string;
                     string estado = Session["Estado"] as string;
                     if (esEdicion)
                     {
@@ -156,6 +156,7 @@ namespace ProyectoHotel
                     fechaEgreso = aux;
                 }
 
+
                 // Agregar todas las fechas en el rango
                 for (DateTime date = fechaIngreso.Value; date <= fechaEgreso.Value; date = date.AddDays(1))
                 {
@@ -214,13 +215,11 @@ namespace ProyectoHotel
             {
                 nuevo.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
                 nuevo.DNI_Huesped = int.Parse(txtDNI.Text);
-                string nombre = txtNombre.Text.ToString();
-                string telefono = txtTelefono.Text.ToString();
+                string nombre = txtNombre.Text;
+                string telefono = txtTelefono.Text;
                 nuevo.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
                 nuevo.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
 
-
-                // Verificar si alguna fecha seleccionada ya está reservada
                 foreach (DateTime fecha in fechasSeleccionadas)
                 {
                     if (fechasReservadas.Contains(fecha))
@@ -229,22 +228,41 @@ namespace ProyectoHotel
                         Response.Redirect("Error.aspx");
                     }
                 }
+
+                decimal precioBase;
+                if (!decimal.TryParse(txtPrecio.Text, out precioBase))
+                {
+                    Response.Write("<script>alert('Error: El precio de la habitación no es válido.');</script>");
+                    return;
+                }
+
+                int totalDias = (nuevo.FechaEgreso - nuevo.FechaIngreso).Days +1;
+                if (totalDias <= 0)
+                {
+                    Response.Write("<script>alert('Error: La fecha de egreso debe ser posterior a la fecha de ingreso.');</script>");
+                    return;
+                }
+
+                decimal totalReserva = precioBase * totalDias;
+
+                nuevo.TotalReserva = totalReserva;
+
                 if (!validarDNI(nuevo.DNI_Huesped))
                 {
                     AgregarHuesped(nuevo.DNI_Huesped, nombre, telefono);
                 }
+
                 negocio.AgregarReserva(nuevo);
+
+
                 Response.Redirect("ListaReservas.aspx", false);
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "');</script>");
             }
-
-
-
-
         }
+
 
         public void AgregarReserva(int dniHuesped, int numeroHabitacion, DateTime fechaIngreso, DateTime fechaEgreso)
         {
@@ -359,6 +377,7 @@ namespace ProyectoHotel
                 modificada.Telefono = txtTelefono.Text;
                 modificada.Numero_Habitacion = int.Parse(txtNroHabitacion.Text);
                 modificada.Capacidad = int.Parse(txtCapacidad.Text);
+                modificada.TotalReserva = Decimal.Parse(txtPrecio.Text);
                 modificada.FechaIngreso = DateTime.Parse(txtFechaIngreso.Text);
                 modificada.FechaEgreso = DateTime.Parse(txtFechaEgreso.Text);
                 modificada.Activo = true;
@@ -373,5 +392,7 @@ namespace ProyectoHotel
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
             }
         }
+
+      
     }
 }

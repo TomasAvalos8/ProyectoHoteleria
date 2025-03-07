@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta(@"SELECT hab.Capacidad, r.Id, r.DNI_Huesped, h.NombreCompleto,h.Telefono, r.Numero_Habitacion, r.FechaIngreso, r.FechaEgreso
+                datos.setearConsulta(@"SELECT hab.Capacidad, r.Id, r.DNI_Huesped, h.NombreCompleto,h.Telefono, r.Numero_Habitacion, r.FechaIngreso, r.FechaEgreso,r.TotalReserva
             FROM Reserva r
             INNER JOIN Huesped h ON r.DNI_Huesped = h.DNI
             INNER JOIN Habitacion hab ON r.Numero_Habitacion = hab.Numero");
@@ -34,8 +34,8 @@ namespace Negocio
                         Numero_Habitacion = (int)datos.Lector["Numero_Habitacion"],
                         Capacidad = (int)datos.Lector["Capacidad"],
                         FechaIngreso = (DateTime)datos.Lector["FechaIngreso"],
-                        FechaEgreso = (DateTime)datos.Lector["FechaEgreso"]
-
+                        FechaEgreso = (DateTime)datos.Lector["FechaEgreso"],
+                        TotalReserva = (decimal)datos.Lector["TotalReserva"]
 
 
                     };
@@ -66,6 +66,7 @@ namespace Negocio
                 accesoDatos.setearParametro("@Numero_Habitacion", nuevo.Numero_Habitacion);
                 accesoDatos.setearParametro("@FechaIngreso", nuevo.FechaIngreso);
                 accesoDatos.setearParametro("@FechaEgreso", nuevo.FechaEgreso);
+                accesoDatos.setearParametro("@TotalReserva", nuevo.TotalReserva);
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -101,8 +102,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("sp_EliminarReserva");
-                datos.setearParametro("@Id", modificada.Id);
+                datos.setearProcedimiento("ModificarReserva");
+                datos.setearParametro("@idReserva", modificada.Id);
+                datos.setearParametro("@DNI_Huesped", modificada.DNI_Huesped);
+                datos.setearParametro("@Numero_habitacion", modificada.Numero_Habitacion);
+                datos.setearParametro("@FechaIngreso", modificada.FechaIngreso);
+                datos.setearParametro("@FechaEgreso", modificada.FechaEgreso);
+                datos.setearParametro("@TotalReserva", modificada.TotalReserva);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

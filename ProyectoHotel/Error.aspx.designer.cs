@@ -15,22 +15,13 @@ namespace ProyectoHotel
     {
 
         /// <summary>
-        /// Control lblError.
+        /// Control txtError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
-
-        /// <summary>
-        /// Control txtErrorDetails.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtErrorDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtError;
 
         /// <summary>
         /// Control btnVolver.

@@ -104,6 +104,7 @@ namespace ProyectoHotel
                     txtTelefono.Text = reserva.Telefono.ToString();
                     txtFechaIngreso.Text = reserva.FechaIngreso.ToString("dd/MM/yyyy");
                     txtFechaEgreso.Text = reserva.FechaEgreso.ToString("dd/MM/yyyy");
+                    
                     break;
                 }
             }
@@ -218,7 +219,7 @@ namespace ProyectoHotel
                     Session["IdReserva"] = ID;
                     Session["NumeroHabitacion"] = reserva.Numero_Habitacion.ToString();
                     Session["Capacidad"] = reserva.Capacidad.ToString();
-                    //Session[""] = reserva.precio.ToString();
+                    Session["TotalReserva"] = reserva.TotalReserva.ToString();
                     Session["DNI"] = reserva.DNI_Huesped.ToString();
                     Session["Nombre"] = reserva.Nombre_Huesped.ToString();
                     Session["Telefono"] = reserva.Telefono.ToString();

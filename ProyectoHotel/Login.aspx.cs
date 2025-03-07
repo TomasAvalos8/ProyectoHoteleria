@@ -25,11 +25,11 @@ namespace ProyectoHotel
                 if (negocio.Loguear(usuario))
                 {
                     Session.Add("Usuario", usuario);
-                    Response.Redirect("Default.aspx", false);
+                    Response.Redirect("Reservas.aspx", false);
                 }
                 else
                 {
-                    Session.Add("Error", "Usuario o Contraseña Incorrectos");
+                    Session.Add("ErrorMensaje", "Usuario o Contraseña Incorrectos");
                     Response.Redirect("Error.aspx");
                 }
 

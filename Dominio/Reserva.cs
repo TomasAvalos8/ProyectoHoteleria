@@ -18,5 +18,6 @@ namespace Dominio
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaEgreso { get; set; }
         public bool Activo { get; set; }
+        public Decimal TotalReserva { get; set; }
     }
 }
