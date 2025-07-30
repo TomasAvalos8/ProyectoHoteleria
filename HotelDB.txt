@@ -1,0 +1,304 @@
+CREATE DATABASE HotelDB;
+GO
+USE HotelDB;
+GO
+
+-- Tabla de Huesped
+CREATE TABLE Huesped (
+    DNI INT PRIMARY KEY, -- Clave primaria
+    NombreCompleto VARCHAR(100) NOT NULL,
+    Telefono VARCHAR(20) NOT NULL
+);
+
+-- Tabla de Habitacion
+CREATE TABLE Habitacion (
+    Numero INT PRIMARY KEY, -- Clave primaria
+    Capacidad INT NOT NULL,
+    Estado VARCHAR(50) NOT NULL CHECK (Estado IN ('Disponible', 'Ocupada', 'Mantenimiento')),
+    Activo BIT DEFAULT 1
+);
+
+-- Tabla de Reserva
+CREATE TABLE Reserva (
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- Clave primaria con autoincremento
+    DNI_Huesped INT NOT NULL, -- Clave foránea a Huesped
+    Numero_Habitacion INT NOT NULL, -- Clave foránea a Habitacion
+    FechaIngreso DATE NOT NULL,
+    FechaEgreso DATE NOT NULL,
+    Activo BIT DEFAULT 1,
+    FOREIGN KEY (DNI_Huesped) REFERENCES Huesped(DNI) ON DELETE CASCADE,
+    FOREIGN KEY (Numero_Habitacion) REFERENCES Habitacion(Numero) ON DELETE CASCADE
+);
+
+CREATE TABLE FechasReservadas (
+    IDFecha INT IDENTITY(1,1) PRIMARY KEY, -- Clave primaria con autoincremento
+    IdReserva INT NOT NULL, -- Clave foránea a Reserva
+    Fecha DATE NOT NULL,
+    FOREIGN KEY (IdReserva) REFERENCES Reserva(Id) ON DELETE CASCADE
+);
+
+-- Tabla de Usuarios
+CREATE TABLE Usuarios (
+    Id INT NOT NULL PRIMARY KEY IDENTITY(1,1), -- Clave primaria
+    Usuario VARCHAR(50) ,
+    Contraseña VARCHAR(255) NOT NULL, 
+    Administrador BIT -- 0 = Admin, 1 = Recepcionista
+);
+
+CREATE PROCEDURE InsertarReserva
+    @DNI_Huesped INT,
+    @Numero_Habitacion INT,
+    @FechaIngreso DATE,
+    @FechaEgreso DATE
+AS
+BEGIN
+    DECLARE @IdReserva INT;
+
+    --  Insertar en la tabla de Reserva
+    INSERT INTO Reserva (DNI_Huesped, Numero_Habitacion, FechaIngreso, FechaEgreso) 
+    VALUES (@DNI_Huesped, @Numero_Habitacion, @FechaIngreso, @FechaEgreso);
+
+    -- Obtener el ID de la reserva recién creada
+    SET @IdReserva = SCOPE_IDENTITY();
+
+    -- Insertar todas las fechas en FechasReservadas
+    DECLARE @FechaActual DATE = @FechaIngreso;
+    WHILE @FechaActual <= @FechaEgreso
+    BEGIN
+        INSERT INTO FechasReservadas (IdReserva, Fecha) VALUES (@IdReserva, @FechaActual);
+        SET @FechaActual = DATEADD(DAY, 1, @FechaActual);
+    END
+END;
+
+CREATE PROCEDURE sp_AgregarHabitacion
+    @Numero INT,               -- Número de la habitación
+    @Capacidad INT,            -- Capacidad de la habitación
+    @Estado VARCHAR(50),       -- Estado de la habitación
+    @Activo BIT = 1            -- Estado activo (por defecto es 1)
+AS
+BEGIN
+    -- Verificar si la habitación ya existe
+    IF EXISTS (SELECT 1 FROM Habitacion WHERE Numero = @Numero)
+    BEGIN
+        -- Si la habitación ya existe, lanzar un error
+        RAISERROR('La habitación con el número %d ya existe.', 16, 1, @Numero);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Verificar que el estado sea válido
+    IF @Estado NOT IN ('Disponible', 'Ocupada', 'Mantenimiento')
+    BEGIN
+        -- Si el estado no es válido, lanzar un error
+        RAISERROR('El estado debe ser "Disponible", "Ocupada" o "Mantenimiento".', 16, 1);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Insertar la nueva habitación
+    INSERT INTO Habitacion (Numero, Capacidad, Estado, Activo)
+    VALUES (@Numero, @Capacidad, @Estado, @Activo);
+
+    -- Mensaje de éxito
+    PRINT 'Habitación agregada correctamente.';
+END
+
+ALTER TABLE Usuarios
+ALTER COLUMN Administrador INT;
+
+insert into Usuarios values 
+('Tomas','Avalos',2)
+
+CREATE PROCEDURE insertarNuevo
+    @user VARCHAR(50),
+    @pass VARCHAR(255),
+    @Administrador INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Usuarios (Usuario, Contraseña, Administrador)
+    VALUES (@user, @pass, @Administrador);
+
+    -- Devolver el ID del nuevo usuario insertado
+    SELECT SCOPE_IDENTITY() AS NuevoID;
+END;
+
+
+CREATE PROCEDURE sp_EliminarReserva
+    @Id INT  -- Id de la reserva a eliminar
+AS
+BEGIN
+    -- Verificar si la reserva existe
+    IF NOT EXISTS (SELECT 1 FROM Reserva WHERE Id = @Id)
+    BEGIN
+        -- Si no existe, lanzar un error
+        RAISERROR('La reserva con el Id %d no existe.', 16, 1, @Id);
+        RETURN;  -- Salir del procedimiento
+    END
+
+    -- Eliminar la reserva
+    DELETE FROM Reserva WHERE Id = @Id;
+
+    -- Mensaje de éxito
+    PRINT 'Reserva eliminada correctamente.';
+END
+
+ALTER TABLE Habitacion
+ADD PrecioBase DECIMAL(10,2) NOT NULL DEFAULT 0;
+
+
+ALTER PROCEDURE sp_AgregarHabitacion
+    @Numero INT,               -- Número de la habitación
+    @Capacidad INT,            -- Capacidad de la habitación
+    @Estado VARCHAR(50),       -- Estado de la habitación
+    @PrecioBase DECIMAL(10, 2), -- Precio base de la habitación (nuevo campo)
+    @Activo BIT = 1            -- Estado activo (por defecto es 1)
+AS
+BEGIN
+    -- Verificar si la habitación ya existe
+    IF EXISTS (SELECT 1 FROM Habitacion WHERE Numero = @Numero)
+    BEGIN
+        -- Si la habitación ya existe, lanzar un error
+        RAISERROR('La habitación con el número %d ya existe.', 16, 1, @Numero);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Verificar que el estado sea válido
+    IF @Estado NOT IN ('Disponible', 'Ocupada', 'Mantenimiento')
+    BEGIN
+        -- Si el estado no es válido, lanzar un error
+        RAISERROR('El estado debe ser "Disponible", "Ocupada" o "Mantenimiento".', 16, 1);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Verificar que el PrecioBase sea válido (mayor o igual a 0)
+    IF @PrecioBase < 0
+    BEGIN
+        -- Si el PrecioBase es negativo, lanzar un error
+        RAISERROR('El PrecioBase no puede ser un valor negativo.', 16, 1);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Insertar la nueva habitación
+    INSERT INTO Habitacion (Numero, Capacidad, Estado, PrecioBase, Activo)
+    VALUES (@Numero, @Capacidad, @Estado, @PrecioBase, @Activo);
+
+    -- Mensaje de éxito
+    PRINT 'Habitación agregada correctamente.';
+END
+
+ALTER PROCEDURE sp_ModificarHabitacion
+    @Numero INT,               -- Número de la habitación
+    @Capacidad INT,            -- Nueva capacidad de la habitación
+    @Estado VARCHAR(50),       -- Nuevo estado de la habitación
+    @PrecioBase DECIMAL(10, 2), -- Nuevo precio base de la habitación (nuevo campo)
+    @Activo BIT = 1            -- Estado activo (por defecto es 1)
+AS
+BEGIN
+    -- Verificar si la habitación existe
+    IF NOT EXISTS (SELECT 1 FROM Habitacion WHERE Numero = @Numero)
+    BEGIN
+        -- Si la habitación no existe, lanzar un error
+        RAISERROR('La habitación con el número %d no existe.', 16, 1, @Numero);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Verificar que el estado sea válido
+    IF @Estado NOT IN ('Disponible', 'Ocupada', 'Mantenimiento')
+    BEGIN
+        -- Si el estado no es válido, lanzar un error
+        RAISERROR('El estado debe ser "Disponible", "Ocupada" o "Mantenimiento".', 16, 1);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Verificar que el PrecioBase sea válido (mayor o igual a 0)
+    IF @PrecioBase < 0
+    BEGIN
+        -- Si el PrecioBase es negativo, lanzar un error
+        RAISERROR('El PrecioBase no puede ser un valor negativo.', 16, 1);
+        RETURN; -- Salir del procedimiento
+    END
+
+    -- Actualizar la habitación con los nuevos valores
+    UPDATE Habitacion
+    SET 
+        Capacidad = @Capacidad,
+        Estado = @Estado,
+        PrecioBase = @PrecioBase,
+        Activo = @Activo
+    WHERE Numero = @Numero;
+
+    -- Mensaje de éxito
+    PRINT 'Habitación modificada correctamente.';
+END
+
+ALTER TABLE Reserva
+ADD TotalReserva DECIMAL(10,2) NOT NULL DEFAULT 0;
+
+ ALTER PROCEDURE InsertarReserva
+    @DNI_Huesped INT,
+    @Numero_Habitacion INT,
+    @FechaIngreso DATE,
+    @FechaEgreso DATE,
+    @TotalReserva DECIMAL(10,2) -- Nuevo parámetro para almacenar el total
+AS
+BEGIN
+    DECLARE @IdReserva INT;
+
+    -- Insertar en la tabla de Reserva con el nuevo campo TotalReserva
+    INSERT INTO Reserva (DNI_Huesped, Numero_Habitacion, FechaIngreso, FechaEgreso, TotalReserva) 
+    VALUES (@DNI_Huesped, @Numero_Habitacion, @FechaIngreso, @FechaEgreso, @TotalReserva);
+
+    -- Obtener el ID de la reserva recién creada
+    SET @IdReserva = SCOPE_IDENTITY();
+
+    -- Insertar todas las fechas en FechasReservadas
+    DECLARE @FechaActual DATE = @FechaIngreso;
+    WHILE @FechaActual < @FechaEgreso  -- Se usa < para evitar registrar la fecha de salida
+    BEGIN
+        INSERT INTO FechasReservadas (IdReserva, Fecha) VALUES (@IdReserva, @FechaActual);
+        SET @FechaActual = DATEADD(DAY, 1, @FechaActual);
+    END
+END;
+
+CREATE PROCEDURE ModificarReserva
+    @IdReserva INT, -- ID de la reserva a modificar
+    @DNI_Huesped INT,
+    @Numero_Habitacion INT,
+    @FechaIngreso DATE,
+    @FechaEgreso DATE,
+    @TotalReserva DECIMAL(10,2) -- Nuevo valor total
+AS
+BEGIN
+    -- Iniciar una transacción para garantizar la consistencia de datos
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Actualizar la información de la reserva
+        UPDATE Reserva
+        SET DNI_Huesped = @DNI_Huesped,
+            Numero_Habitacion = @Numero_Habitacion,
+            FechaIngreso = @FechaIngreso,
+            FechaEgreso = @FechaEgreso,
+            TotalReserva = @TotalReserva
+        WHERE Id = @IdReserva;
+
+        -- Eliminar las fechas antiguas en FechasReservadas para esta reserva
+        DELETE FROM FechasReservadas WHERE IdReserva = @IdReserva;
+
+        -- Insertar las nuevas fechas en FechasReservadas
+        DECLARE @FechaActual DATE = @FechaIngreso;
+        WHILE @FechaActual < @FechaEgreso  -- Evitar registrar la fecha de salida
+        BEGIN
+            INSERT INTO FechasReservadas (IdReserva, Fecha) VALUES (@IdReserva, @FechaActual);
+            SET @FechaActual = DATEADD(DAY, 1, @FechaActual);
+        END;
+
+        -- Confirmar la transacción
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- En caso de error, hacer rollback
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH;
+END;
