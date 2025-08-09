@@ -5,12 +5,12 @@ Sistema completo de gestión hotelera desarrollado en **ASP.NET** que permite ad
 ## 📋 Características Principales
 
 ### 🛏️ Gestión de Habitaciones
-- **CRUD completo** de habitaciones (Crear, Leer, Actualizar, Eliminar)
+- **ABML completo de habitaciones (Altas, Bajas, Modificaciones, Listados)
 - Administración de tipos de habitación y características
 - Control de disponibilidad en tiempo real
 
 ### 📅 Sistema de Reservas
-- **CRUD completo** de reservas
+- **ABML completo** de reservas
 - **Calendar interactivo** con datos precargados desde la base de datos
 - **Indicadores visuales por colores**:
   - 🟢 Habitaciones disponibles
