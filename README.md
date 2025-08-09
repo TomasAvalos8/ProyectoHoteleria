@@ -5,7 +5,7 @@ Sistema completo de gestión hotelera desarrollado en **ASP.NET** que permite ad
 ## 📋 Características Principales
 
 ### 🛏️ Gestión de Habitaciones
-- **ABML completo de habitaciones (Altas, Bajas, Modificaciones, Listados)
+- **ABML completo de habitaciones** (Altas, Bajas, Modificaciones, Listados)
 - Administración de tipos de habitación y características
 - Control de disponibilidad en tiempo real
 
